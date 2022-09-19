@@ -21,7 +21,7 @@ As a proof of concept, we propose a web app that aims to list the prices for com
 
 We have preliminarily identified 4 hospital price files on the internet.  We have also found the price lists for Medicare and Colorado's Medicaid program.  
 
-Univeristy of Colorado Hospital price file in json format:
+University of Colorado Hospital price file in json format:
 https://search.hospitalpriceindex.com/hpi2/machineReadable/UniversityofCOHospital/8086or
 
 Poudre Valley Hospital price file in json format:
@@ -55,9 +55,10 @@ Mitigation Strategy for above risks:
 We plan to spend significant time learning new languages and toolsets, and split up this work so we all get a chance to learn.
 There are many good web resources to get started learning things like JSON and Javascript.
 We plan to meet weekly and assess our collaboration, in order to split up tasks and work together more cohesively.
+We will address resource lacks as they occur, because they are hard to predict.
 
 Development method: scrum, kanban, waterfall: with specifics!
-We plan to use scrum methodology to develop the project iteratively and incrememntally.
+We plan to use scrum methodology to develop the project iteratively and incrementally.
 Each week we will plan a manageable small set of tasks to complete before the next meeting.
 We will assess progress on the fly and make flexible adjustments as necessary.
 It will be helpful to have a sprint task backlog to organize this process once we are more familiar with the full project scope.
