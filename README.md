@@ -55,7 +55,6 @@ Mitigation Strategy for above risks:
 We plan to spend significant time learning new languages and toolsets, and split up this work so we all get a chance to learn.
 There are many good web resources to get started learning things like JSON and Javascript.
 We plan to meet weekly and assess our collaboration, in order to split up tasks and work together more cohesively.
-...
 
 Development method: scrum, kanban, waterfall: with specifics!
 We plan to use scrum methodology to develop the project iteratively and incrememntally.
@@ -65,6 +64,6 @@ It will be helpful to have a sprint task backlog to organize this process once w
 
 Project Tracking Software link (Trello is most common)
 [Make sure to add access for the instructor(s)]
-#We need to add access for this and our GitHub repo. Could someone send a PM to Dr. Knox to ask how?
+#We need to add access for our GitHub repo. I added knoxd@colorado.edu to Trello. We should maybe confirm he has access. 
 
 https://trello.com/b/T4HiUfEx/project-management
