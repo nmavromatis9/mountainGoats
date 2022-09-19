@@ -68,6 +68,5 @@ It will be helpful to have a sprint task backlog to organize this process once w
 
 Project Tracking Software link (Trello is most common)
 [Make sure to add access for the instructor(s)]
-#We need to add access for our GitHub repo. I added knoxd@colorado.edu to Trello. We should maybe confirm he has access. 
-
+ 
 https://trello.com/b/T4HiUfEx/project-management
