@@ -1,14 +1,14 @@
 import json
 import csv
 
-#JSON script to extract data from U. of Colorado JSON sheet
+#JSON script to extract data from JSON sheet
 
 print("HELLO WORLD!")
 
 try:
-    f = open("./../JSON Files/uofcolorado.json", 'rb')
+    f = open("./../JSON Files/poudrevalley.json", 'rb')
 except OSError:
-    print ("Could not open/read file uofcolorado.json")
+    print ("Could not open/read file poudrevalley.json")
     sys.exit()
     
 data=json.load(f)
