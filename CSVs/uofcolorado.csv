@@ -1,0 +1,175 @@
+Associated_Codes,Cash_Discount,DeIdentified_Max_Allowed,Deidentified_Min_Allowed,description,Gross_Charge,iobSelection,payer,Payer_Allowed_Amount
+10160,1266.0800,976.2000,100.6700,Puncture of Blood or Fluid Under Skin Using Needle,3165.2000,Outpatient,Aetna Commercial,608.6400
+10160,1266.0800,976.2000,100.6700,Puncture of Blood or Fluid Under Skin Using Needle,3165.2000,Outpatient,Anthem Commercial,507.6000
+10160,1266.0800,976.2000,100.6700,Puncture of Blood or Fluid Under Skin Using Needle,3165.2000,Outpatient,Cigna Commercial,976.2000
+10160,1266.0800,976.2000,100.6700,Puncture of Blood or Fluid Under Skin Using Needle,3165.2000,Outpatient,Kaiser Commercial,N/A
+10160,1266.0800,976.2000,100.6700,Puncture of Blood or Fluid Under Skin Using Needle,3165.2000,Outpatient,Medicare Advantage,N/A
+10160,1266.0800,976.2000,100.6700,Puncture of Blood or Fluid Under Skin Using Needle,3165.2000,Outpatient,United Commercial,418.4900
+45380,1931.2000,3648.5600,1133.3100,Exam of Entire Large Intestine with Biopsy Using Colonoscope,4828.0000,Outpatient,Aetna Commercial,3648.5600
+45380,1931.2000,3648.5600,1133.3100,Exam of Entire Large Intestine with Biopsy Using Colonoscope,4828.0000,Outpatient,Anthem Commercial,3251.2100
+45380,1931.2000,3648.5600,1133.3100,Exam of Entire Large Intestine with Biopsy Using Colonoscope,4828.0000,Outpatient,Cigna Commercial,2238.9800
+45380,1931.2000,3648.5600,1133.3100,Exam of Entire Large Intestine with Biopsy Using Colonoscope,4828.0000,Outpatient,Kaiser Commercial,3635.0500
+45380,1931.2000,3648.5600,1133.3100,Exam of Entire Large Intestine with Biopsy Using Colonoscope,4828.0000,Outpatient,Medicare Advantage,N/A
+45380,1931.2000,3648.5600,1133.3100,Exam of Entire Large Intestine with Biopsy Using Colonoscope,4828.0000,Outpatient,United Commercial,3128.8800
+45385,2056.9800,3486.1000,1073.3700,Removal of Growth from Large Intestine By Snare Using Colonoscope,5142.4500,Outpatient,Aetna Commercial,3112.3200
+45385,2056.9800,3486.1000,1073.3700,Removal of Growth from Large Intestine By Snare Using Colonoscope,5142.4500,Outpatient,Anthem Commercial,3486.1000
+45385,2056.9800,3486.1000,1073.3700,Removal of Growth from Large Intestine By Snare Using Colonoscope,5142.4500,Outpatient,Cigna Commercial,2183.6200
+45385,2056.9800,3486.1000,1073.3700,Removal of Growth from Large Intestine By Snare Using Colonoscope,5142.4500,Outpatient,Kaiser Commercial,N/A
+45385,2056.9800,3486.1000,1073.3700,Removal of Growth from Large Intestine By Snare Using Colonoscope,5142.4500,Outpatient,Medicare Advantage,N/A
+45385,2056.9800,3486.1000,1073.3700,Removal of Growth from Large Intestine By Snare Using Colonoscope,5142.4500,Outpatient,United Commercial,2637.4800
+71260,2400.4000,674.7500,194.4900,CAT Scan of Chest With Contrast,6001.0100,Outpatient,Aetna Commercial,607.4800
+71260,2400.4000,674.7500,194.4900,CAT Scan of Chest With Contrast,6001.0100,Outpatient,Anthem Commercial,645.8300
+71260,2400.4000,674.7500,194.4900,CAT Scan of Chest With Contrast,6001.0100,Outpatient,Cigna Commercial,290.1600
+71260,2400.4000,674.7500,194.4900,CAT Scan of Chest With Contrast,6001.0100,Outpatient,Kaiser Commercial,242.0200
+71260,2400.4000,674.7500,194.4900,CAT Scan of Chest With Contrast,6001.0100,Outpatient,Medicare Advantage,N/A
+71260,2400.4000,674.7500,194.4900,CAT Scan of Chest With Contrast,6001.0100,Outpatient,United Commercial,674.7500
+72125,1766.6400,2877.6100,193.3500,CAT Scan of Neck Spine Without Contrast,4416.5900,Outpatient,Aetna Commercial,814.8000
+72125,1766.6400,2877.6100,193.3500,CAT Scan of Neck Spine Without Contrast,4416.5900,Outpatient,Anthem Commercial,729.6900
+72125,1766.6400,2877.6100,193.3500,CAT Scan of Neck Spine Without Contrast,4416.5900,Outpatient,Cigna Commercial,460.3000
+72125,1766.6400,2877.6100,193.3500,CAT Scan of Neck Spine Without Contrast,4416.5900,Outpatient,Kaiser Commercial,2877.6100
+72125,1766.6400,2877.6100,193.3500,CAT Scan of Neck Spine Without Contrast,4416.5900,Outpatient,Medicare Advantage,N/A
+72125,1766.6400,2877.6100,193.3500,CAT Scan of Neck Spine Without Contrast,4416.5900,Outpatient,United Commercial,893.3600
+72192,1751.6400,2785.7700,166.0800,CAT Scan of Pelvis Without Contrast,4379.1100,Outpatient,Aetna Commercial,610.0000
+72192,1751.6400,2785.7700,166.0800,CAT Scan of Pelvis Without Contrast,4379.1100,Outpatient,Anthem Commercial,830.0000
+72192,1751.6400,2785.7700,166.0800,CAT Scan of Pelvis Without Contrast,4379.1100,Outpatient,Cigna Commercial,N/A
+72192,1751.6400,2785.7700,166.0800,CAT Scan of Pelvis Without Contrast,4379.1100,Outpatient,Kaiser Commercial,2785.7700
+72192,1751.6400,2785.7700,166.0800,CAT Scan of Pelvis Without Contrast,4379.1100,Outpatient,Medicare Advantage,N/A
+72192,1751.6400,2785.7700,166.0800,CAT Scan of Pelvis Without Contrast,4379.1100,Outpatient,United Commercial,703.0000
+72195,2171.1900,1272.0000,595.0000,MRI of Pelvis Without Contrast,5427.9800,Outpatient,Aetna Commercial,1272.0000
+72195,2171.1900,1272.0000,595.0000,MRI of Pelvis Without Contrast,5427.9800,Outpatient,Anthem Commercial,1004.0000
+72195,2171.1900,1272.0000,595.0000,MRI of Pelvis Without Contrast,5427.9800,Outpatient,Cigna Commercial,595.0000
+72195,2171.1900,1272.0000,595.0000,MRI of Pelvis Without Contrast,5427.9800,Outpatient,Kaiser Commercial,N/A
+72195,2171.1900,1272.0000,595.0000,MRI of Pelvis Without Contrast,5427.9800,Outpatient,Medicare Advantage,N/A
+72195,2171.1900,1272.0000,595.0000,MRI of Pelvis Without Contrast,5427.9800,Outpatient,United Commercial,1113.0000
+72196,4017.2700,1708.4100,1708.4100,MRI of Pelvis With Contrast,10043.1800,Outpatient,Aetna Commercial,N/A
+72196,4017.2700,1708.4100,1708.4100,MRI of Pelvis With Contrast,10043.1800,Outpatient,Anthem Commercial,1708.4100
+72196,4017.2700,1708.4100,1708.4100,MRI of Pelvis With Contrast,10043.1800,Outpatient,Cigna Commercial,N/A
+72196,4017.2700,1708.4100,1708.4100,MRI of Pelvis With Contrast,10043.1800,Outpatient,Kaiser Commercial,N/A
+72196,4017.2700,1708.4100,1708.4100,MRI of Pelvis With Contrast,10043.1800,Outpatient,Medicare Advantage,N/A
+72196,4017.2700,1708.4100,1708.4100,MRI of Pelvis With Contrast,10043.1800,Outpatient,United Commercial,N/A
+73000,189.0200,467.9100,78.9200,X-Ray of Collarbone,472.5500,Outpatient,Aetna Commercial,132.8800
+73000,189.0200,467.9100,78.9200,X-Ray of Collarbone,472.5500,Outpatient,Anthem Commercial,440.0900
+73000,189.0200,467.9100,78.9200,X-Ray of Collarbone,472.5500,Outpatient,Cigna Commercial,122.8800
+73000,189.0200,467.9100,78.9200,X-Ray of Collarbone,472.5500,Outpatient,Kaiser Commercial,467.9100
+73000,189.0200,467.9100,78.9200,X-Ray of Collarbone,472.5500,Outpatient,Medicare Advantage,N/A
+73000,189.0200,467.9100,78.9200,X-Ray of Collarbone,472.5500,Outpatient,United Commercial,398.4900
+74150,2378.0500,3217.7100,320.2800,CAT Scan of Abdomen Without Contrast,5945.1200,Outpatient,Aetna Commercial,818.0000
+74150,2378.0500,3217.7100,320.2800,CAT Scan of Abdomen Without Contrast,5945.1200,Outpatient,Anthem Commercial,830.0000
+74150,2378.0500,3217.7100,320.2800,CAT Scan of Abdomen Without Contrast,5945.1200,Outpatient,Cigna Commercial,320.2800
+74150,2378.0500,3217.7100,320.2800,CAT Scan of Abdomen Without Contrast,5945.1200,Outpatient,Kaiser Commercial,2952.0200
+74150,2378.0500,3217.7100,320.2800,CAT Scan of Abdomen Without Contrast,5945.1200,Outpatient,Medicare Advantage,N/A
+74150,2378.0500,3217.7100,320.2800,CAT Scan of Abdomen Without Contrast,5945.1200,Outpatient,United Commercial,3217.7100
+74250,1107.5700,590.0000,590.0000,X-Ray of Small Intestines With Single Contrast Agent,2768.9300,Outpatient,Aetna Commercial,N/A
+74250,1107.5700,590.0000,590.0000,X-Ray of Small Intestines With Single Contrast Agent,2768.9300,Outpatient,Anthem Commercial,590.0000
+74250,1107.5700,590.0000,590.0000,X-Ray of Small Intestines With Single Contrast Agent,2768.9300,Outpatient,Cigna Commercial,N/A
+74250,1107.5700,590.0000,590.0000,X-Ray of Small Intestines With Single Contrast Agent,2768.9300,Outpatient,Kaiser Commercial,N/A
+74250,1107.5700,590.0000,590.0000,X-Ray of Small Intestines With Single Contrast Agent,2768.9300,Outpatient,Medicare Advantage,N/A
+74250,1107.5700,590.0000,590.0000,X-Ray of Small Intestines With Single Contrast Agent,2768.9300,Outpatient,United Commercial,N/A
+80053,157.6600,173.0000,13.0500,Lab Test - Comprehensive Metabolic Panel,394.1600,Outpatient,Aetna Commercial,49.2600
+80053,157.6600,173.0000,13.0500,Lab Test - Comprehensive Metabolic Panel,394.1600,Outpatient,Anthem Commercial,42.4500
+80053,157.6600,173.0000,13.0500,Lab Test - Comprehensive Metabolic Panel,394.1600,Outpatient,Cigna Commercial,32.8200
+80053,157.6600,173.0000,13.0500,Lab Test - Comprehensive Metabolic Panel,394.1600,Outpatient,Kaiser Commercial,173.0000
+80053,157.6600,173.0000,13.0500,Lab Test - Comprehensive Metabolic Panel,394.1600,Outpatient,Medicare Advantage,N/A
+80053,157.6600,173.0000,13.0500,Lab Test - Comprehensive Metabolic Panel,394.1600,Outpatient,United Commercial,71.5300
+81210,238.0100,N/A,N/A,Lab Test - Analysis of BRAF Gene for Specific Variants,595.0200,Outpatient,Aetna Commercial,N/A
+81210,238.0100,N/A,N/A,Lab Test - Analysis of BRAF Gene for Specific Variants,595.0200,Outpatient,Anthem Commercial,N/A
+81210,238.0100,N/A,N/A,Lab Test - Analysis of BRAF Gene for Specific Variants,595.0200,Outpatient,Cigna Commercial,N/A
+81210,238.0100,N/A,N/A,Lab Test - Analysis of BRAF Gene for Specific Variants,595.0200,Outpatient,Kaiser Commercial,N/A
+81210,238.0100,N/A,N/A,Lab Test - Analysis of BRAF Gene for Specific Variants,595.0200,Outpatient,Medicare Advantage,N/A
+81210,238.0100,N/A,N/A,Lab Test - Analysis of BRAF Gene for Specific Variants,595.0200,Outpatient,United Commercial,N/A
+81272,453.9000,N/A,N/A,Lab Test - Targeted Sequence Analysis of KIT Gene,1134.7500,Outpatient,Aetna Commercial,N/A
+81272,453.9000,N/A,N/A,Lab Test - Targeted Sequence Analysis of KIT Gene,1134.7500,Outpatient,Anthem Commercial,N/A
+81272,453.9000,N/A,N/A,Lab Test - Targeted Sequence Analysis of KIT Gene,1134.7500,Outpatient,Cigna Commercial,N/A
+81272,453.9000,N/A,N/A,Lab Test - Targeted Sequence Analysis of KIT Gene,1134.7500,Outpatient,Kaiser Commercial,N/A
+81272,453.9000,N/A,N/A,Lab Test - Targeted Sequence Analysis of KIT Gene,1134.7500,Outpatient,Medicare Advantage,N/A
+81272,453.9000,N/A,N/A,Lab Test - Targeted Sequence Analysis of KIT Gene,1134.7500,Outpatient,United Commercial,N/A
+82465,21.2400,22.1200,7.5400,Lab Test - Total Cholesterol Level,53.1000,Outpatient,Aetna Commercial,22.1200
+82465,21.2400,22.1200,7.5400,Lab Test - Total Cholesterol Level,53.1000,Outpatient,Anthem Commercial,17.1400
+82465,21.2400,22.1200,7.5400,Lab Test - Total Cholesterol Level,53.1000,Outpatient,Cigna Commercial,8.0700
+82465,21.2400,22.1200,7.5400,Lab Test - Total Cholesterol Level,53.1000,Outpatient,Kaiser Commercial,N/A
+82465,21.2400,22.1200,7.5400,Lab Test - Total Cholesterol Level,53.1000,Outpatient,Medicare Advantage,N/A
+82465,21.2400,22.1200,7.5400,Lab Test - Total Cholesterol Level,53.1000,Outpatient,United Commercial,7.5400
+82947,11.3400,17.6100,5.1500,Lab Test - Glucose Level in Blood,28.3500,Outpatient,Aetna Commercial,15.1700
+82947,11.3400,17.6100,5.1500,Lab Test - Glucose Level in Blood,28.3500,Outpatient,Anthem Commercial,15.1500
+82947,11.3400,17.6100,5.1500,Lab Test - Glucose Level in Blood,28.3500,Outpatient,Cigna Commercial,8.3200
+82947,11.3400,17.6100,5.1500,Lab Test - Glucose Level in Blood,28.3500,Outpatient,Kaiser Commercial,17.6100
+82947,11.3400,17.6100,5.1500,Lab Test - Glucose Level in Blood,28.3500,Outpatient,Medicare Advantage,N/A
+82947,11.3400,17.6100,5.1500,Lab Test - Glucose Level in Blood,28.3500,Outpatient,United Commercial,9.3100
+83874,97.6100,46.5100,46.5100,Lab Test - Myoglobin Protein Level,244.0200,Outpatient,Aetna Commercial,N/A
+83874,97.6100,46.5100,46.5100,Lab Test - Myoglobin Protein Level,244.0200,Outpatient,Anthem Commercial,46.5100
+83874,97.6100,46.5100,46.5100,Lab Test - Myoglobin Protein Level,244.0200,Outpatient,Cigna Commercial,N/A
+83874,97.6100,46.5100,46.5100,Lab Test - Myoglobin Protein Level,244.0200,Outpatient,Kaiser Commercial,N/A
+83874,97.6100,46.5100,46.5100,Lab Test - Myoglobin Protein Level,244.0200,Outpatient,Medicare Advantage,N/A
+83874,97.6100,46.5100,46.5100,Lab Test - Myoglobin Protein Level,244.0200,Outpatient,United Commercial,N/A
+84484,147.8300,113.2500,49.1400,Lab Test - Troponin Protein Level,369.5800,Outpatient,Aetna Commercial,57.6400
+84484,147.8300,113.2500,49.1400,Lab Test - Troponin Protein Level,369.5800,Outpatient,Anthem Commercial,52.5200
+84484,147.8300,113.2500,49.1400,Lab Test - Troponin Protein Level,369.5800,Outpatient,Cigna Commercial,69.3300
+84484,147.8300,113.2500,49.1400,Lab Test - Troponin Protein Level,369.5800,Outpatient,Kaiser Commercial,90.4300
+84484,147.8300,113.2500,49.1400,Lab Test - Troponin Protein Level,369.5800,Outpatient,Medicare Advantage,N/A
+84484,147.8300,113.2500,49.1400,Lab Test - Troponin Protein Level,369.5800,Outpatient,United Commercial,113.2500
+85025,56.3700,71.0500,19.0600,Lab Test - Complete Blood Cell Count With White Blood Cell Percentage,140.9300,Outpatient,Aetna Commercial,36.6100
+85025,56.3700,71.0500,19.0600,Lab Test - Complete Blood Cell Count With White Blood Cell Percentage,140.9300,Outpatient,Anthem Commercial,30.4600
+85025,56.3700,71.0500,19.0600,Lab Test - Complete Blood Cell Count With White Blood Cell Percentage,140.9300,Outpatient,Cigna Commercial,19.0600
+85025,56.3700,71.0500,19.0600,Lab Test - Complete Blood Cell Count With White Blood Cell Percentage,140.9300,Outpatient,Kaiser Commercial,71.0500
+85025,56.3700,71.0500,19.0600,Lab Test - Complete Blood Cell Count With White Blood Cell Percentage,140.9300,Outpatient,Medicare Advantage,N/A
+85025,56.3700,71.0500,19.0600,Lab Test - Complete Blood Cell Count With White Blood Cell Percentage,140.9300,Outpatient,United Commercial,30.6300
+86703,42.0400,69.6500,25.2400,Lab Test - Identification of HIV-1 and HIV-2 Antibodies,105.0900,Outpatient,Aetna Commercial,69.6500
+86703,42.0400,69.6500,25.2400,Lab Test - Identification of HIV-1 and HIV-2 Antibodies,105.0900,Outpatient,Anthem Commercial,51.6900
+86703,42.0400,69.6500,25.2400,Lab Test - Identification of HIV-1 and HIV-2 Antibodies,105.0900,Outpatient,Cigna Commercial,50.8900
+86703,42.0400,69.6500,25.2400,Lab Test - Identification of HIV-1 and HIV-2 Antibodies,105.0900,Outpatient,Kaiser Commercial,N/A
+86703,42.0400,69.6500,25.2400,Lab Test - Identification of HIV-1 and HIV-2 Antibodies,105.0900,Outpatient,Medicare Advantage,N/A
+86703,42.0400,69.6500,25.2400,Lab Test - Identification of HIV-1 and HIV-2 Antibodies,105.0900,Outpatient,United Commercial,25.2400
+99202,62.3200,104.4100,28.7800,Outpatient Clinic Visit New Patient Level II,155.8100,Outpatient,Aetna Commercial,89.4900
+99202,62.3200,104.4100,28.7800,Outpatient Clinic Visit New Patient Level II,155.8100,Outpatient,Anthem Commercial,N/A
+99202,62.3200,104.4100,28.7800,Outpatient Clinic Visit New Patient Level II,155.8100,Outpatient,Cigna Commercial,69.6200
+99202,62.3200,104.4100,28.7800,Outpatient Clinic Visit New Patient Level II,155.8100,Outpatient,Kaiser Commercial,101.1800
+99202,62.3200,104.4100,28.7800,Outpatient Clinic Visit New Patient Level II,155.8100,Outpatient,Medicare Advantage,N/A
+99202,62.3200,104.4100,28.7800,Outpatient Clinic Visit New Patient Level II,155.8100,Outpatient,United Commercial,63.1100
+99203,86.4700,142.1700,76.5300,Outpatient Clinic Visit New Patient Level III,216.1700,Outpatient,Aetna Commercial,124.4300
+99203,86.4700,142.1700,76.5300,Outpatient Clinic Visit New Patient Level III,216.1700,Outpatient,Anthem Commercial,N/A
+99203,86.4700,142.1700,76.5300,Outpatient Clinic Visit New Patient Level III,216.1700,Outpatient,Cigna Commercial,121.6200
+99203,86.4700,142.1700,76.5300,Outpatient Clinic Visit New Patient Level III,216.1700,Outpatient,Kaiser Commercial,142.1700
+99203,86.4700,142.1700,76.5300,Outpatient Clinic Visit New Patient Level III,216.1700,Outpatient,Medicare Advantage,N/A
+99203,86.4700,142.1700,76.5300,Outpatient Clinic Visit New Patient Level III,216.1700,Outpatient,United Commercial,76.5300
+99204,108.2800,182.7800,38.4100,Outpatient Clinic Visit New Patient Level IV,270.7100,Outpatient,Aetna Commercial,156.5900
+99204,108.2800,182.7800,38.4100,Outpatient Clinic Visit New Patient Level IV,270.7100,Outpatient,Anthem Commercial,167.1800
+99204,108.2800,182.7800,38.4100,Outpatient Clinic Visit New Patient Level IV,270.7100,Outpatient,Cigna Commercial,N/A
+99204,108.2800,182.7800,38.4100,Outpatient Clinic Visit New Patient Level IV,270.7100,Outpatient,Kaiser Commercial,175.0900
+99204,108.2800,182.7800,38.4100,Outpatient Clinic Visit New Patient Level IV,270.7100,Outpatient,Medicare Advantage,N/A
+99204,108.2800,182.7800,38.4100,Outpatient Clinic Visit New Patient Level IV,270.7100,Outpatient,United Commercial,89.6500
+99205,138.2100,275.0400,96.8500,Outpatient Clinic Visit New Patient Level V,345.5100,Outpatient,Aetna Commercial,198.5900
+99205,138.2100,275.0400,96.8500,Outpatient Clinic Visit New Patient Level V,345.5100,Outpatient,Anthem Commercial,N/A
+99205,138.2100,275.0400,96.8500,Outpatient Clinic Visit New Patient Level V,345.5100,Outpatient,Cigna Commercial,202.8400
+99205,138.2100,275.0400,96.8500,Outpatient Clinic Visit New Patient Level V,345.5100,Outpatient,Kaiser Commercial,226.0500
+99205,138.2100,275.0400,96.8500,Outpatient Clinic Visit New Patient Level V,345.5100,Outpatient,Medicare Advantage,N/A
+99205,138.2100,275.0400,96.8500,Outpatient Clinic Visit New Patient Level V,345.5100,Outpatient,United Commercial,96.8500
+99281,316.3700,434.0400,71.4000,Level 1 Emergency Department Visit,790.9400,Outpatient,Aetna Commercial,434.0400
+99281,316.3700,434.0400,71.4000,Level 1 Emergency Department Visit,790.9400,Outpatient,Anthem Commercial,340.5900
+99281,316.3700,434.0400,71.4000,Level 1 Emergency Department Visit,790.9400,Outpatient,Cigna Commercial,317.8000
+99281,316.3700,434.0400,71.4000,Level 1 Emergency Department Visit,790.9400,Outpatient,Kaiser Commercial,283.5800
+99281,316.3700,434.0400,71.4000,Level 1 Emergency Department Visit,790.9400,Outpatient,Medicare Advantage,N/A
+99281,316.3700,434.0400,71.4000,Level 1 Emergency Department Visit,790.9400,Outpatient,United Commercial,376.9500
+99282,418.4600,915.0000,130.1600,Level 2 Emergency Department Visit,1046.1400,Outpatient,Aetna Commercial,915.0000
+99282,418.4600,915.0000,130.1600,Level 2 Emergency Department Visit,1046.1400,Outpatient,Anthem Commercial,658.5900
+99282,418.4600,915.0000,130.1600,Level 2 Emergency Department Visit,1046.1400,Outpatient,Cigna Commercial,664.7300
+99282,418.4600,915.0000,130.1600,Level 2 Emergency Department Visit,1046.1400,Outpatient,Kaiser Commercial,570.4700
+99282,418.4600,915.0000,130.1600,Level 2 Emergency Department Visit,1046.1400,Outpatient,Medicare Advantage,N/A
+99282,418.4600,915.0000,130.1600,Level 2 Emergency Department Visit,1046.1400,Outpatient,United Commercial,536.6800
+99283,912.3000,1609.6800,129.5800,Level 3 Emergency Department Visit,2280.7600,Outpatient,Aetna Commercial,1609.6800
+99283,912.3000,1609.6800,129.5800,Level 3 Emergency Department Visit,2280.7600,Outpatient,Anthem Commercial,1391.2000
+99283,912.3000,1609.6800,129.5800,Level 3 Emergency Department Visit,2280.7600,Outpatient,Cigna Commercial,1325.5500
+99283,912.3000,1609.6800,129.5800,Level 3 Emergency Department Visit,2280.7600,Outpatient,Kaiser Commercial,1267.0000
+99283,912.3000,1609.6800,129.5800,Level 3 Emergency Department Visit,2280.7600,Outpatient,Medicare Advantage,N/A
+99283,912.3000,1609.6800,129.5800,Level 3 Emergency Department Visit,2280.7600,Outpatient,United Commercial,973.2200
+99284,2509.0800,3055.1300,137.1700,Level 4 Emergency Department Visit,6272.7000,Outpatient,Aetna Commercial,3055.1300
+99284,2509.0800,3055.1300,137.1700,Level 4 Emergency Department Visit,6272.7000,Outpatient,Anthem Commercial,2787.0000
+99284,2509.0800,3055.1300,137.1700,Level 4 Emergency Department Visit,6272.7000,Outpatient,Cigna Commercial,2106.3700
+99284,2509.0800,3055.1300,137.1700,Level 4 Emergency Department Visit,6272.7000,Outpatient,Kaiser Commercial,2173.9200
+99284,2509.0800,3055.1300,137.1700,Level 4 Emergency Department Visit,6272.7000,Outpatient,Medicare Advantage,N/A
+99284,2509.0800,3055.1300,137.1700,Level 4 Emergency Department Visit,6272.7000,Outpatient,United Commercial,2405.1300
+99285,3529.8100,5377.4200,283.4400,Level 5 Emergency Department Visit,8824.5300,Outpatient,Aetna Commercial,5377.4200
+99285,3529.8100,5377.4200,283.4400,Level 5 Emergency Department Visit,8824.5300,Outpatient,Anthem Commercial,3649.7600
+99285,3529.8100,5377.4200,283.4400,Level 5 Emergency Department Visit,8824.5300,Outpatient,Cigna Commercial,2670.7700
+99285,3529.8100,5377.4200,283.4400,Level 5 Emergency Department Visit,8824.5300,Outpatient,Kaiser Commercial,4068.4000
+99285,3529.8100,5377.4200,283.4400,Level 5 Emergency Department Visit,8824.5300,Outpatient,Medicare Advantage,N/A
+99285,3529.8100,5377.4200,283.4400,Level 5 Emergency Department Visit,8824.5300,Outpatient,United Commercial,3815.3700

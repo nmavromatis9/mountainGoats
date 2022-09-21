@@ -1,7 +1,7 @@
 import json
 import csv
 
-#JSON script to extract data from JSON sheet
+#JSON script to extract data from JSON sheet into csv
 
 print("HELLO WORLD!")
 
@@ -21,8 +21,30 @@ cpt_codes=[10160,11010,21048,21557,32440,32480,32505,33218,33330,33361,33533,364
 #convert ints to strings with list comprehension
 cpt_codes = [str(x) for x in cpt_codes]
 
+hospitalData=[]
+
 for i in range(l):
     for j in cpt_codes:   
         if(data[0]['item'][i]['Associated_Codes'] == j):
-            print(data[0]['item'][i])
-            #print(i)
+            #print(data[0]['item'][i])
+            hospitalData.append(data[0]['item'][i])
+            
+#print(hospitalData)
+#Now output to csv file.
+csv_file=open('./../CSVs/poudrevalley.csv', 'w')
+
+csv_writer=csv.writer(csv_file)
+
+#Counter var used to write header to csv
+ctr=0
+
+for i in hospitalData:
+    if (ctr==0):
+        #write headers to csv file
+        header=i.keys()
+        csv_writer.writerow(header)
+        ctr+=1
+    #write the rest of the rows to csv
+    csv_writer.writerow(i.values())
+    
+csv_file.close()
