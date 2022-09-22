@@ -3,7 +3,7 @@ import csv
 
 #JSON script to extract data from U. of Colorado JSON sheet into csv
 
-print("HELLO WORLD!")
+print("extracting uofcolorado.json")
 
 try:
     f = open("./../JSON Files/uofcolorado.json", 'rb')

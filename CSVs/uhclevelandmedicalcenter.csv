@@ -1,0 +1,19 @@
+payer,description,Associated_Codes,Avg_Gross_Charge,Payer_Allowed_Amount,Cash_Discount,Deidentified_Min_Allowed,DeIdentified_Max_Allowed,iobSelection
+Advantage By Buckeye Medicare Advantage,Lab Test - Comprehensive Metabolic Panel,80053,285.7500,12.7100,285.7500,12.4900,28.1400,Outpatient
+Anthem BCBS Medicare Advantage,Lab Test - Comprehensive Metabolic Panel,80053,285.7500,12.4900,285.7500,12.4900,28.1400,Outpatient
+Anthem BCBS Medicare Advantage,X-Ray Of Collarbone,73000,455.5200,58.0400,455.5200,58.0400,78.2100,Outpatient
+Buckeye Community Health Plan Medicaid,Lab Test - Troponin Protein Level,84484,191.3000,21.2700,191.3000,21.2700,22.6900,Outpatient
+Buckeye Community Health Plan Medicaid,X-Ray Of Collarbone,73000,455.5200,78.2100,455.5200,58.0400,78.2100,Outpatient
+CARESOURCE Medicaid,CAT Scan Of Chest With Contrast,71260,2608.4500,214.2400,2608.4500,194.5800,332.2500,Outpatient
+CARESOURCE Medicaid,CAT Scan Of Pelvis Without Contrast,72192,1992.3100,307.8000,1992.3100,307.8000,307.8000,Outpatient
+CARESOURCE Medicaid,Lab Test - Comprehensive Metabolic Panel,80053,285.7500,27.8300,285.7500,12.4900,28.1400,Outpatient
+CARESOURCE Medicaid,Lab Test - Troponin Protein Level,84484,191.3000,21.9000,191.3000,21.2700,22.6900,Outpatient
+CARESOURCE Medicaid,X-Ray Of Collarbone,73000,455.5200,67.9600,455.5200,58.0400,78.2100,Outpatient
+Humana Medicare Advantage,X-Ray Of Collarbone,73000,455.5200,58.7300,455.5200,58.0400,78.2100,Outpatient
+MOLINA HEALTH Medicaid,Lab Test - Comprehensive Metabolic Panel,80053,285.7500,28.1400,285.7500,12.4900,28.1400,Outpatient
+MOLINA HEALTH Medicaid,Lab Test - Troponin Protein Level,84484,191.3000,22.6600,191.3000,21.2700,22.6900,Outpatient
+Paramount Medicaid,Lab Test - Comprehensive Metabolic Panel,80053,285.7500,27.8100,285.7500,12.4900,28.1400,Outpatient
+Paramount Medicaid,Lab Test - Troponin Protein Level,84484,191.3000,21.8200,191.3000,21.2700,22.6900,Outpatient
+United Healthcare Community Medicaid,Lab Test - Troponin Protein Level,84484,191.3000,22.6900,191.3000,21.2700,22.6900,Outpatient
+United Healthcare Community Medicaid,X-Ray Of Collarbone,73000,455.5200,69.3600,455.5200,58.0400,78.2100,Outpatient
+United Healthcare Medicare Advantage,CAT Scan Of Abdomen Without Contrast,74150,2468.1900,106.3400,2468.1900,106.3400,106.3400,Outpatient

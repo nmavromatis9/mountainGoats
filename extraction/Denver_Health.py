@@ -3,7 +3,7 @@ import csv
 
 #JSON script to extract data from JSON sheet
 
-print("HELLO WORLD!")
+print("Extracting denverhealth.json")
 
 try:
     f = open("./../JSON Files/denverhealth.json", 'rb')
