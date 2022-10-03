@@ -1,5 +1,7 @@
 Nicolas Mavromatis, Nima6629
+
 Cooper Ide, coid6456
+
 Patrick Chesnut, chesnutp
 
 Weekly Status: Medical Procedure Price Checker
