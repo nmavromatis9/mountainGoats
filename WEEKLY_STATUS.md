@@ -16,6 +16,10 @@ Plans for next week include continuing to learn Flask, the basics of SQL, and wo
 Our top priorities are to learn Flask and plan our web layout.
 We plan to make a mockup of pages, and create a list of page descriptions after organizing the structure of the application. 
 
+During our third week, we continued to learn Flask, and started on the web layout design. 
+We plan to think about implementation details for python scripts for passing parameters to the database engine.
+
+
 <figure>
   <IMG SRC="TrelloSC.PNG">
 </figure>
