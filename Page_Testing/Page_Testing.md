@@ -48,4 +48,40 @@ We still need to decide if a successful login links to the user profile page, or
   <IMG SRC="Login.PNG">
 </figure>
 
+    
+Page 5: User Info Page
+This page displays the users account information. 
+It will need to store an active session token and it will need the user's username as string parameters.
+It will need access to user information and their configuration info.
+If active session is idle for too long, it should log the user out and redirect to the login page.
+If for some reason the user is not found or the token is corrupted it should log the user out and display a "not found" page.
+If user is found and session is active, it should link to a "User Info" page that will display their account settings and other configs.
+There is a lot of data on this page so we will need to make sure it correctly maps to our backend.
+We will need to create a few new tables for tracking visits and costs
+There will need to be tests that can verify the correct images render based on the user's info.
+There will need to be tests to make sure a non-existent user renders a not found page.
+There will need to be tests to make sure a user account does not render in the case of a corrupted or inactive token.
+We will create a sample login, and test that the user can navigate to their user info page, and that it opens the correct user info page and that it renders.
+
+
+<figure>
+  <IMG SRC="UserInfo.PNG">
+</figure>
+    
+Page 6: Browse By Hospital Page
+This page displays the procedures and costs of a given hospital. 
+We will need the hospitals name as a string parameter.
+For the return data we will need a query with the id of the hospital passed in to return the results of our main table.
+If for the hospital does not exist it will not show in the autocomplete suggestion.
+All links on the page should correctly route to the correct pages, this should be consistent across all pages.
+There will need to be tests to verify that the autcomplete is functioning as it should and that it is providing correct suggestions.
+There will need to be tests to make sure the data returned from the query is compatible with the table we are rendering.
+We will also need to verify the text box with the Hospital name matches the id in the returned query.
+
+
+<figure>
+  <IMG SRC="UserInfo.PNG">
+</figure>
+
+
 
