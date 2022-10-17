@@ -80,7 +80,7 @@ We will also need to verify the text box with the Hospital name matches the id i
 
 
 <figure>
-  <IMG SRC="UserInfo.PNG">
+  <IMG SRC="Hospital.PNG">
 </figure>
 
 
