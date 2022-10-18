@@ -48,4 +48,13 @@ We still need to decide if a successful login links to the user profile page, or
   <IMG SRC="Login.PNG">
 </figure>
 
-
+Page 3: Title: Insurer Page
+<ul>
+    <li>Page Description: This page will consist of a search bar that takes the name of an insurer.  Below the search bar will be output consisting of a table that displays the insurer's negotiated prices for every procedure at each hospital.  A Google map will below the table will indicate the location of each hospital. </li>
+    <li>Parameters needed for the page: The page will need the name of an insurer.</li>
+    <li>Data needed to render the page: The database will need to be queried to display the prices for procedures at various hospitals given an insurer.</li>
+    <li>Link destinations for the page: A navigation bar at the top of the page will have links for "Browse by Procedure," "Browse by Insurer" (inactive), "Browse by Hospital," and "User Profile."
+    
+    
+    
+</ul>
