@@ -9,7 +9,7 @@ Project Milestone 5
 
 Search Bar Table:
 
-This table is generated dynamically after searching by hospital, procedure name, test code, or insurer in the main page search bar or in the "browse by" pages. 
+This table is generated dynamically after searching by hospital, procedure name, test code, or insurer in the main page search bar.
 
 A slight variation on this table will be generated within the browse by procedure, browse by insurer, and browse by hospital pages, with different parameters passed to SQL.
 
@@ -53,4 +53,5 @@ There will be multiple tests for each search parameter type consisting of multip
 
 Browse by Tables:
  
-These tables are generated dynamically using the same database as the main search bar. In each of specific pages, the user can browse by 
+These tables are generated dynamically using the same database as the main search bar. In each of specific pages, the user can browse by insurer, hospital, or procedure.
+In each page, the user can either ###.... search by a specific parameter???...browse a drop down menu... browse all results...???###
