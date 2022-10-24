@@ -55,3 +55,5 @@ Browse by Tables:
  
 These tables are generated dynamically using the same database as the main search bar. In each of specific pages, the user can browse by insurer, hospital, or procedure.
 In each page, the user can either ###.... search by a specific parameter???...browse a menu with all results...???###
+
+User Login:
