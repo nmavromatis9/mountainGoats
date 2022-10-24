@@ -22,7 +22,7 @@ We plan to think about implementation details for python scripts for passing par
 During the fourth week, we finalized the web page layout design. We also started thinking about the SQL design for milestone 5. 
 We decided on what happens when a user logs in. After a successful login, it should return to the welcome page. 
 
-
+During the fifth week, we started planning milestone 5 and how the SQL queries should function. Nick also started working on python scripts to run SQL in the main page search bar. 
 
 <figure>
   <IMG SRC="TrelloSC.PNG">
