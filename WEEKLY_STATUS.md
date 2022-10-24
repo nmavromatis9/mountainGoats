@@ -19,6 +19,10 @@ We plan to make a mockup of pages, and create a list of page descriptions after 
 During our third week, we continued to learn Flask, and started on the web layout design. 
 We plan to think about implementation details for python scripts for passing parameters to the database engine.
 
+During the fourth week, we finalized the web page layout design. We also started thinking about the SQL design for milestone 5. 
+We decided on what happens when a user logs in. After a successful login, it should return to the welcome page. 
+
+
 
 <figure>
   <IMG SRC="TrelloSC.PNG">
