@@ -8,6 +8,7 @@ import os, sys, string
 import sqlalchemy
 from sqlalchemy import *
 import sqlite3
+import csv
 
 print("Testing...")
 
@@ -17,28 +18,22 @@ try:
 except:
     print("ERROR CONNECTING TO DB")
     
-cur = con.cursor()
+    cur = con.cursor()
+
 
 
 testVar1="10160"
-
-#print(cur.execute("PRAGMA table_info('tblCPT')"))
-r=cur.execute("SELECT c.name FROM pragma_table_info('tblCPT') c;")
-print(r.fetchall())
-
-#cur.execute("SELECT * FROM list WHERE InstitutionName=?", (Variable,))
-
-#r1=cur.execute("SELECT * FROM tblCPT WHERE (CPT_CODE=?)", (testVar1,))
-#print(r1.fetchall())
-
-#SELECT * FROM users WHERE column LIKE '%mystring%'
-
 testString="puncture"
-#check variable substring, from stackoverflow. ||var|| needed to insert variable...
+#check variable substring, from stackoverflow. ||var|| needed to insert variable. || is the concatenation operator.
 #r2=cur.execute("SELECT * FROM tblCPT WHERE (DESCRIPTION LIKE '%'||?||'%')", (testString,))
-#print(r2.fetchall())
 
-r3=cur.execute("SELECT * FROM tblCPT WHERE (CPT_CODE=?) OR (DESCRIPTION LIKE '%'||?||'%')", (testVar1, testString))
-print(r3.fetchall())
+r3=cur.execute("SELECT c.CPT_CODE, c.Description, c.Category, t.Hospital_name, i.Name, h.Cost, h.Gross_charge, h.Cash_discount FROM tblCPT c, tblHospitalPrices h, tblInsurer i, tblHospitals t  WHERE ((c.CPT_CODE=?) OR (c.DESCRIPTION LIKE '%'||?||'%')) AND (c.CPT_CODE==h.CPT_CODE) AND (h.Hospital_ID==t.Hospital_ID) AND (h.InsurerID==i.Insurer_ID) ", (testVar1, testVar1))
+results=r3.fetchall()
+#print(results)
+#print(len(results))
+
+#CSV writer for debug...
+#csvWriter = csv.writer(open("output.csv", "w"))
+#csvWriter.writerows(results)
 
 
