@@ -2,32 +2,50 @@ from flask import Flask, request, render_template
 from markupsafe import escape
 import os, sys, string
 import sqlite3
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 
 
 #Script by: Nicolas Mavromatis, nima6629 
 #Flask script
 #To access webpages:
 #https://coding.CSEL.io/user/nima6629/proxy/5000
+#flask --app routes run
+
+#Sources:https://flask-wtf.readthedocs.io/en/0.15.x/quickstart/
+#https://hackersandslackers.com/flask-wtforms-forms/
+#https://wtforms.readthedocs.io/en/2.3.x/fields/
+
 app = Flask(__name__)
 ################################################################
-#Required Routes
 
-@app.route('/')
+
+@app.route("/",methods =['POST','GET'])
 def index():
-    return 'Index Page'
+    #Call function that uses Flask-WTF’s class FlaskForm
+    form = MyForm()
+    #pass this as parameter to render html, which accesses param as 'var'
+    return render_template("index.html", var=form)
 
-@app.route('/results')
+
+@app.route('/results', methods=['GET', 'POST'])
 def results():
-    results=getSQL()
-    return render_template("table.html", res=results)
+    form=MyForm()
+    if request.method=="POST":
+        search=form.name.data
+        res=getSQL(search)
+        if(len(res)==0):
+            return "No results found for search: "+str(search)
+        return render_template("table.html", res=res)
 
 
-@app.route('/hello')
+@app.route('/hello', methods=['GET', 'POST'])
 def hello():
     return 'Hello, World'
 
 #function to access db by procedure name/cpt code, and generate SQL results
-def getSQL():
+def getSQL(searchTerm):
 
     print("Testing...")
     try:
@@ -36,8 +54,7 @@ def getSQL():
         print("ERROR CONNECTING TO DB")
     
     cur = con.cursor()
-    testVar1="10160"
-    r3=cur.execute("SELECT c.CPT_CODE, c.Description, c.Category, t.Hospital_name, i.Name, h.Cost, h.Gross_charge, h.Cash_discount FROM tblCPT c, tblHospitalPrices h, tblInsurer i, tblHospitals t  WHERE ((c.CPT_CODE=?) OR (c.DESCRIPTION LIKE '%'||?||'%')) AND (c.CPT_CODE==h.CPT_CODE) AND (h.Hospital_ID==t.Hospital_ID) AND (h.InsurerID==i.Insurer_ID) ", (testVar1, testVar1))
+    r3=cur.execute("SELECT c.CPT_CODE, c.Description, c.Category, t.Hospital_name, i.Name, h.Cost, h.Gross_charge, h.Cash_discount FROM tblCPT c, tblHospitalPrices h, tblInsurer i, tblHospitals t  WHERE ((c.CPT_CODE=?) OR (c.DESCRIPTION LIKE '%'||?||'%')) AND (c.CPT_CODE==h.CPT_CODE) AND (h.Hospital_ID==t.Hospital_ID) AND (h.InsurerID==i.Insurer_ID) AND (h.cost IS NOT NULL OR h.Gross_Charge IS NOT NULL OR h.Cash_discount IS NOT NULL)", (searchTerm, searchTerm))
     results=r3.fetchall()
     con.close()
     return results
@@ -68,3 +85,20 @@ class PrefixMiddleware(object):
 
 # insert our proxy setting url class as wrapper to the app
 app.wsgi_app = PrefixMiddleware(app.wsgi_app)
+
+# Flask-WTF requires an encryption key - the string can be anything
+SECRET_KEY = os.urandom(32)
+app.config['SECRET_KEY'] = SECRET_KEY
+
+#Next, we configure a form that inherits from Flask-WTF’s class FlaskForm.
+#StringField() and SubmitField() inherit form wtforms to fill forms easily
+#this passes MyFormObj.name to html template
+class MyForm(FlaskForm):
+    #MyformObj.name() is the user input, label is what is displayed to human
+    #StringField is one line
+    #Make sure data is entered (validator)  
+    
+    #This field is the base for most of the more complicated fields, and represents an <input type="text">.
+    name = StringField('Enter CPT Code or Description:', validators=[DataRequired()])
+    #Represents an <input type="submit">. This allows checking if a given submit button has been pressed.
+    submit = SubmitField()

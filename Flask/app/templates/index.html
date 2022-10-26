@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <div class="topnav">
+      <a class="active" href="https://coding.csel.io/user/nima6629/proxy/5000/">Home</a>
+      <a href="#procedure">Browse By Procedure</a>
+      <a href="#insurer">Browse By Insurer</a>
+      <a href="#hospital">Browse By Hospital</a>
+      <a href="#login">Login</a>
+      <a href="#profile">User Profile</a>
+      <a href="#about">About</a>
+    </div>
+    <div id="welcome"><p>"Welcome! Search Medical Procedure Prices Before You Pay For Care</p>    
+    </div>
+        <!--action is where the results of the search box are sent, upon post -->
+    <!--Uses flask-WTF's FlaskForm class, MyFormObj.name and MyFormObj.label are variables def'd in MyForm() -->
+    <form method="POST" action="https://coding.csel.io/user/nima6629/proxy/5000/results">
+    {{ var.csrf_token }}
+    {{ var.name.label }} {{ var.name(size=20) }}
+    <input type="submit" value="Submit" id="homeSearch">
+</form>
+</body>
