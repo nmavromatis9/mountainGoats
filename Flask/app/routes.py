@@ -1,10 +1,15 @@
-from flask import Flask, request, render_template
+from flask import Flask
+from flask import *
 from markupsafe import escape
 import os, sys, string
 import sqlite3
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
+import flask_login
+
+
+
 
 
 #Script by: Nicolas Mavromatis, nima6629 
@@ -16,10 +21,15 @@ from wtforms.validators import DataRequired
 #Sources:https://flask-wtf.readthedocs.io/en/0.15.x/quickstart/
 #https://hackersandslackers.com/flask-wtforms-forms/
 #https://wtforms.readthedocs.io/en/2.3.x/fields/
+#https://pypi.org/project/Flask-Login/
 
 app = Flask(__name__)
-################################################################
+app.secret_key = 'super secret string'  # Change this!
+login_manager = flask_login.LoginManager()
 
+login_manager.init_app(app)
+################################################################
+#ROUTES:
 
 @app.route("/",methods =['POST','GET'])
 def index():
@@ -37,12 +47,70 @@ def results():
         res=getSQL(search)
         if(len(res)==0):
             return "No results found for search: "+str(search)
-        return render_template("table.html", res=res)
+        return render_template("table.html", res=res);
 
-
-@app.route('/hello', methods=['GET', 'POST'])
+@app.route('/hello')
 def hello():
     return 'Hello, World'
+
+@app.route('/logins', methods=['GET', 'POST'])
+def login():
+    try:
+        con = sqlite3.connect("../../DB_Setup/login.db")
+        cur=con.cursor()
+    except:
+        print("BAD CONNECTION")
+    if request.method == 'GET':
+        return render_template("login.html")
+    
+    name = request.form['email']
+    passwo=request.form['password']
+
+    cur.execute("SELECT email from users WHERE (email=? AND password=?)", (name, passwo))
+    if cur.fetchone(): 
+        user = User()
+        user.id = name
+        flask_login.login_user(user)
+        return redirect('https://coding.csel.io/user/nima6629/proxy/5000/protected')
+
+    return render_template("bad_login.html")
+
+@app.route('/protected')
+@flask_login.login_required
+def protected():
+    print(flask_login.current_user.id)
+    return render_template("logged_in.html", usr=flask_login.current_user.id)
+
+@app.route('/logout')
+def logout():
+    flask_login.logout_user()
+    return render_template("logged_out.html")
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'GET':
+        return render_template("signup.html")
+    
+    name = request.form['signupE']
+    passwo=request.form['signupP']
+    #if email in users and request.form['password'] == users[email]['password']:
+    try:
+        con = sqlite3.connect("../../DB_Setup/login.db")
+        cur=con.cursor()
+    except:
+        print("BAD CONNECTION")
+        
+    cur.execute("SELECT email from users WHERE (email=?)", (name,))
+    if cur.fetchone(): 
+        return "User Already Exists! Try Again"
+    else:
+        addUser(name, passwo)
+         
+        return render_template("user_added.html", usr=name)
+
+#FUNCTIONS:
+
+#############################################################################
 
 #function to access db by procedure name/cpt code, and generate SQL results
 def getSQL(searchTerm):
@@ -59,6 +127,70 @@ def getSQL(searchTerm):
     con.close()
     return results
 
+#Configure a form that inherits from Flask-WTF’s class FlaskForm.
+#StringField() and SubmitField() inherit form wtforms to fill forms easily
+#this passes MyFormObj.name to html template
+class MyForm(FlaskForm):
+    #MyformObj.name() is the user input, label is what is displayed to human
+    #StringField is one line
+    #Make sure data is entered (validator)  
+    
+    #This field is the base for most of the more complicated fields, and represents an <input type="text">.
+    name = StringField('Enter CPT Code or Description:', validators=[DataRequired()])
+    #Represents an <input type="submit">. This allows checking if a given submit button has been pressed.
+    submit = SubmitField()
+    
+
+# Flask-WTF requires an encryption key - the string can be anything
+SECRET_KEY = os.urandom(32)
+app.config['SECRET_KEY'] = SECRET_KEY
+
+################################################################################
+
+#Functions to login. uses many inherited member vars from flask_login module
+
+class User(flask_login.UserMixin):
+    pass
+
+@login_manager.user_loader
+def user_loader(email2):
+    con = sqlite3.connect("../../DB_Setup/login.db")
+    cur = con.cursor()
+    cur.execute("SELECT email from users WHERE (email=?)", (email2,))
+    if not cur.fetchone():
+        return
+
+    user = User()
+    user.id = email2
+    return user
+
+@login_manager.request_loader
+def request_loader(request):
+    name = request.form.get('email')
+    con = sqlite3.connect("../../DB_Setup/login.db")
+    cur = con.cursor()
+    cur.execute("SELECT email from users WHERE (email=?)", (name,))
+    if not cur.fetchone(): 
+        return
+
+    user = User()
+    user.id = name
+    return user
+
+@login_manager.unauthorized_handler
+def unauthorized_handler():
+    return 'Unauthorized', 401
+
+#Function to add new user to db file
+def addUser(name, passw):
+    con = sqlite3.connect("../../DB_Setup/login.db")
+    cur = con.cursor()
+    cur.execute("INSERT INTO users VALUES (?, ?);",(name, passw))
+    con.commit()
+    con.close()
+        
+        
+        
 ###############################################################################
 ## This section allows us to set the prefix information to access
 ## url's that access our JupyterHub environment.
@@ -86,19 +218,3 @@ class PrefixMiddleware(object):
 # insert our proxy setting url class as wrapper to the app
 app.wsgi_app = PrefixMiddleware(app.wsgi_app)
 
-# Flask-WTF requires an encryption key - the string can be anything
-SECRET_KEY = os.urandom(32)
-app.config['SECRET_KEY'] = SECRET_KEY
-
-#Next, we configure a form that inherits from Flask-WTF’s class FlaskForm.
-#StringField() and SubmitField() inherit form wtforms to fill forms easily
-#this passes MyFormObj.name to html template
-class MyForm(FlaskForm):
-    #MyformObj.name() is the user input, label is what is displayed to human
-    #StringField is one line
-    #Make sure data is entered (validator)  
-    
-    #This field is the base for most of the more complicated fields, and represents an <input type="text">.
-    name = StringField('Enter CPT Code or Description:', validators=[DataRequired()])
-    #Represents an <input type="submit">. This allows checking if a given submit button has been pressed.
-    submit = SubmitField()
