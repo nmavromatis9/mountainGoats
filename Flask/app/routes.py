@@ -23,6 +23,7 @@ import flask_login
 #https://wtforms.readthedocs.io/en/2.3.x/fields/
 #https://pypi.org/project/Flask-Login/
 
+#Script below by Nicolas Mavromatis. Please add name to script sections you author.
 app = Flask(__name__)
 app.secret_key = 'super secret string'  # Change this!
 login_manager = flask_login.LoginManager()
@@ -40,14 +41,25 @@ def index():
 
 
 @app.route('/results', methods=['GET', 'POST'])
-def results():
+def CPTresults():
     form=MyForm()
     if request.method=="POST":
         search=form.name.data
-        res=getSQL(search)
+        res=getCPT(search)
         if(len(res)==0):
             return "No results found for search: "+str(search)
         return render_template("table.html", res=res);
+  
+@app.route('/results/insurer-results', methods=['GET', 'POST'])
+def Insurer_results():
+    form=MyForm2()
+    if request.method=="POST":
+        search=form.name.data
+        res=getInsurers(search)
+        if(len(res)==0):
+            return "No results found for search: "+str(search)
+        return render_template("table.html", res=res);
+        
 
 @app.route('/hello')
 def hello():
@@ -108,12 +120,20 @@ def signup():
          
         return render_template("user_added.html", usr=name)
 
+@app.route("/browse-insurer",methods =['POST','GET'])
+def browse_insurer():
+    #Call function that uses Flask-WTF’s class FlaskForm
+    form = MyForm2()
+    #pass this as parameter to render html, which accesses param as 'var'
+    return render_template("browse_insurer.html", var=form)
+    
+
 #FUNCTIONS:
 
 #############################################################################
 
 #function to access db by procedure name/cpt code, and generate SQL results
-def getSQL(searchTerm):
+def getCPT(searchTerm):
 
     print("Testing...")
     try:
@@ -127,6 +147,20 @@ def getSQL(searchTerm):
     con.close()
     return results
 
+#function to access db by procedure name/cpt code, and generate SQL results
+def getInsurers(searchTerm):
+
+    print("Testing...")
+    try:
+        con = sqlite3.connect("../../DB_Setup/hospital.db")
+    except:
+        print("ERROR CONNECTING TO DB")
+    
+    cur = con.cursor()
+    r3=cur.execute("SELECT c.CPT_CODE, c.Description, c.Category, t.Hospital_name, i.Name, h.Cost, h.Gross_charge, h.Cash_discount FROM tblCPT c, tblHospitalPrices h, tblInsurer i, tblHospitals t  WHERE ((i.name LIKE '%'||?||'%') AND (c.CPT_CODE==h.CPT_CODE) AND (h.Hospital_ID==t.Hospital_ID) AND (h.InsurerID==i.Insurer_ID) AND (h.cost IS NOT NULL OR h.Gross_Charge IS NOT NULL OR h.Cash_discount IS NOT NULL))", (searchTerm,))
+    results=r3.fetchall()
+    con.close()
+    return results
 #Configure a form that inherits from Flask-WTF’s class FlaskForm.
 #StringField() and SubmitField() inherit form wtforms to fill forms easily
 #this passes MyFormObj.name to html template
@@ -137,6 +171,16 @@ class MyForm(FlaskForm):
     
     #This field is the base for most of the more complicated fields, and represents an <input type="text">.
     name = StringField('Enter CPT Code or Description:', validators=[DataRequired()])
+    #Represents an <input type="submit">. This allows checking if a given submit button has been pressed.
+    submit = SubmitField()
+    
+class MyForm2(FlaskForm):
+    #MyformObj.name() is the user input, label is what is displayed to human
+    #StringField is one line
+    #Make sure data is entered (validator)  
+    
+    #This field is the base for most of the more complicated fields, and represents an <input type="text">.
+    name = StringField('Enter Insurer', validators=[DataRequired()])
     #Represents an <input type="submit">. This allows checking if a given submit button has been pressed.
     submit = SubmitField()
     
