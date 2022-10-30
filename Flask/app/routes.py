@@ -50,12 +50,22 @@ def CPTresults():
             return "No results found for search: "+str(search)
         return render_template("table.html", res=res);
   
-@app.route('/results/insurer-results', methods=['GET', 'POST'])
+@app.route('/insurer-results', methods=['GET', 'POST'])
 def Insurer_results():
     form=MyForm2()
     if request.method=="POST":
         search=form.name.data
         res=getInsurers(search)
+        if(len(res)==0):
+            return "No results found for search: "+str(search)
+        return render_template("table.html", res=res);
+    
+@app.route('/hospital-results', methods=['GET', 'POST'])
+def Hospital_results():
+    form=MyForm3()
+    if request.method=="POST":
+        search=form.name.data
+        res=getHospitals(search)
         if(len(res)==0):
             return "No results found for search: "+str(search)
         return render_template("table.html", res=res);
@@ -126,6 +136,20 @@ def browse_insurer():
     form = MyForm2()
     #pass this as parameter to render html, which accesses param as 'var'
     return render_template("browse_insurer.html", var=form)
+
+@app.route("/browse-hospital",methods =['POST','GET'])
+def browse_hospital():
+    #Call function that uses Flask-WTF’s class FlaskForm
+    form = MyForm3()
+    #pass this as parameter to render html, which accesses param as 'var'
+    return render_template("browse_hospital.html", var=form)
+
+@app.route("/browse-procedure",methods =['POST','GET'])
+def browse_procedure():
+    #Call function that uses Flask-WTF’s class FlaskForm
+    form = MyForm()
+    #pass this as parameter to render html, which accesses param as 'var'
+    return render_template("browse_procedure.html", var=form)
     
 
 #FUNCTIONS:
@@ -161,9 +185,28 @@ def getInsurers(searchTerm):
     results=r3.fetchall()
     con.close()
     return results
+
+
+#function to access db by procedure name/cpt code, and generate SQL results
+def getHospitals(searchTerm):
+
+    print("Testing...")
+    try:
+        con = sqlite3.connect("../../DB_Setup/hospital.db")
+    except:
+        print("ERROR CONNECTING TO DB")
+    
+    cur = con.cursor()
+    r3=cur.execute("SELECT c.CPT_CODE, c.Description, c.Category, t.Hospital_name, i.Name, h.Cost, h.Gross_charge, h.Cash_discount FROM tblCPT c, tblHospitalPrices h, tblInsurer i, tblHospitals t  WHERE ((t.Hospital_name LIKE '%'||?||'%') AND (c.CPT_CODE==h.CPT_CODE) AND (h.Hospital_ID==t.Hospital_ID) AND (h.InsurerID==i.Insurer_ID) AND (h.cost IS NOT NULL OR h.Gross_Charge IS NOT NULL OR h.Cash_discount IS NOT NULL))", (searchTerm,))
+    results=r3.fetchall()
+    con.close()
+    return results
+
 #Configure a form that inherits from Flask-WTF’s class FlaskForm.
 #StringField() and SubmitField() inherit form wtforms to fill forms easily
 #this passes MyFormObj.name to html template
+
+#form for cpt code/procedure
 class MyForm(FlaskForm):
     #MyformObj.name() is the user input, label is what is displayed to human
     #StringField is one line
@@ -174,6 +217,7 @@ class MyForm(FlaskForm):
     #Represents an <input type="submit">. This allows checking if a given submit button has been pressed.
     submit = SubmitField()
     
+#form for insurer
 class MyForm2(FlaskForm):
     #MyformObj.name() is the user input, label is what is displayed to human
     #StringField is one line
@@ -183,8 +227,18 @@ class MyForm2(FlaskForm):
     name = StringField('Enter Insurer', validators=[DataRequired()])
     #Represents an <input type="submit">. This allows checking if a given submit button has been pressed.
     submit = SubmitField()
-    
 
+#form for hospital
+class MyForm3(FlaskForm):
+    #MyformObj.name() is the user input, label is what is displayed to human
+    #StringField is one line
+    #Make sure data is entered (validator)  
+    
+    #This field is the base for most of the more complicated fields, and represents an <input type="text">.
+    name = StringField('Enter Hospital', validators=[DataRequired()])
+    #Represents an <input type="submit">. This allows checking if a given submit button has been pressed.
+    submit = SubmitField()
+    
 # Flask-WTF requires an encryption key - the string can be anything
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY

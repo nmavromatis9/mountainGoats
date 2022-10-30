@@ -15,14 +15,14 @@
       <a href="#profile">User Profile</a>
       <a href="#about">About</a>
     </div>
-    <div id="welcome"><p>Welcome! Search Medical Procedure Prices Before You Pay For Care</p>    
+    <div id="welcome"><p>Browse or Search by Insurer:</p>    
     </div>
         <!--action is where the results of the search box are sent, upon post -->
     <!--Uses flask-WTF's FlaskForm class, MyFormObj.name and MyFormObj.label are variables def'd in MyForm() -->
-    <form method="POST" action="https://coding.csel.io/user/nima6629/proxy/5000/results">
+    <form method="POST" action="https://coding.csel.io/user/nima6629/proxy/5000/insurer-results">
     {{ var.csrf_token }}
     {{ var.name.label }} {{ var.name(size=20) }}
-    <input type="submit" value="Submit" id="homeSearch">
+    <input type="submit" value="Submit" id="insurerSearch">
 </form>
 </body>
 </html>
