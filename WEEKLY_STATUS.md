@@ -26,6 +26,8 @@ During the fifth week, we started planning milestone 5 and how the SQL queries s
 Patrick and Cooper will start working on the scripts for user login and the browse by pages.
 We have settled on Flask for the backend framework, and heroku. We still need to look into how to integrate flask with Heroku and some external database. 
 
+During the sixth week, Nick got a basic version of Flask running, created a search bar for each page that runs SQL, and created a basic login and signup system. 
+
 <figure>
   <IMG SRC="TrelloSC.PNG">
 </figure>
