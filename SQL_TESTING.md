@@ -14,14 +14,14 @@ This table is generated dynamically after searching by procedure name or test co
 A slight variation on this table will be generated within the browse by procedure, browse by insurer, and browse by hospital pages, with different parameters passed to SQL.
 
 Fields: Associated Codes-The CPT code associated with each test.
-Cash-Discount Price:???
-Deidentified Max Allowed:???
-Deidentified Min Allowed:???
+Cash-Discount Price: This is the price patients without insurance pay.
+Deidentified Max Allowed: This is the hospital's maximum contracted rate with a health insurer.
+Deidentified Min Allowed: This is the hospital's minimum contracted rate with a health insurer.
 Description: Short text description of procedure.
-Gross Charge:???
+Gross Charge: This is the sticker price for a procedure.  Insurer's and self-pay patients always pay less than this amount.
 iob Selection: Inpatient or Outpatient procedure
 Payer: Insurance Company
-Payer Allowed Amount:???
+Payer Allowed Amount: This is the amount the insurer has negotiated with the hospital.
 
 Tests:
 
