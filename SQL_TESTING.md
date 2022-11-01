@@ -1,11 +1,87 @@
-Project Milestone 5
-
-# Team 5 - Mountain Goats
-## Weekly Status Report for Medical Procedure Price Checker
+# Project Milestone 5
+## Team 5 - Mountain Goats
 #### Members
 - Nicolas Mavromatis (Nima6629)
 - Cooper Ide (coid6456)
 - Patrick Chesnut (chesnutp)
+
+---
+
+#### List of Tables
+Our website will utilize a sqlite database consisting of 5 tables.
+- ##### tblHospitalPrices
+Description: This is the main table of the database.  It lists the prices of procedures and services by hospital and insurer.  Three prcies are included cost, gross charge, and cash discount.
+
+| Table             | Field         | Data Type      | Description                                            | Key     |
+|-------------------|---------------|----------------|--------------------------------------------------------|---------|
+| tblHospitalPrices | CPT_code      | Int            | Code of specific Procedure or Service                  | Foreign |
+| tblHospitalPrices | Hospital_ID   | Int            | Unique Identifier of Hospital                          | Foreign |
+| tblHospitalPrices | Insurer_ID    | Int            | Unique Identifier of Insurance Plan                    | Foreign |
+| tblHospitalPrices | Cost          | Money          | Insurer's Negotiated Rate for Procedure or Service     |         |
+| tblHospitalPrices | Gross_charge  | Money          | Hospital's Undiscounted Sticker Price                  |         |
+| tblHospitalPrices | Cash_discount | Decimal        | Discount for Cash Payment Method                       |         | 
+Tests to verify: To verify the test is loaded properly we plan to perform the SQL query, `SELECT * FROM tblHospitalPrices;`.  We will then compare this data with the data present in the Excel file located in the DB_XLSX_Files directory.
+
+- ##### tblInsurer
+Description: This table lists all of the insurers that we gathered price data for.  It includes two public insurers and four private insurers.
+| Table             | Field         | Data Type      | Description                                                        | Key     |
+|-------------------|---------------|----------------|--------------------------------------------------------------------|---------|
+| tblInsurer        | Insurer_ID    | Int            | Primary Key of Insurer table                                       | Primary |
+| tblInsurer        | Name          | Nvarchar(100)  | Name of Insurer                                                    |         |
+| tblInsurer        | Detailed      | Nvarchar(200)  | Plan Name                                                          |         |
+Tests to verify: To verify the test is loaded properly we plan to perform the SQL query, `SELECT * FROM tblInsurer;`.  We will then compare this data with the data present in the Excel file located in the DB_XLSX_Files directory.
+
+- #### tblHospitals
+Description: This table lists all of the hospitals that we gathered price data for.  It includes four hospitals from Colorado and one hospital from Ohio.
+| Table             | Field         | Data Type      | Description                                                        | Key     |
+|-------------------|---------------|----------------|--------------------------------------------------------------------|---------|
+| tblHospitals      | Hospital_ID   | Int            | Primary Key of Hospital table                                      | Primary |
+| tblHospitals      | Hospital name | Nvarchar(200)  | Name of Hospital                                                   |         |
+Tests to verify: To verify the test is loaded properly we plan to perform the SQL query, `SELECT * FROM tblHospitals;`.  We will then compare this data with the data present in the Excel file located in the DB_XLSX_Files directory.
+
+- #### tblCPT_Codes
+Description: CPT codes are standard industry codes that uniquely identify all possible servies or procedures that can be performed on a patient.  We selected a subset of 50 of these codes to include in our project.
+| Table             | Field         | Data Type      | Description                                                        | Key     |
+|-------------------|---------------|----------------|--------------------------------------------------------------------|---------|
+| tblCPT_Codes      | CPT_code      | Int            | Current Procedural Terminology codes - Prim Key of CPT_Codes table | Primary |
+| tblCPT_Codes      | Description   | Nvarchar(1000) | Description of Service or Procedure                                |         |
+| tblCPT_Codes      | Category      | Nvarchar(100)  | Category of service or procedure                                   |         |
+Tests to verify: To verify the test is loaded properly we plan to perform the SQL query, `SELECT * FROM tblCPT_Codes;`.  We will then compare this data with the data present in the Excel file located in the DB_XLSX_Files directory.
+
+- #### tblUsers
+Description: The final table simply lists users and their associated passwords.
+| Table             | Field         | Data Type      | Description                                                        | Key     |
+|-------------------|---------------|----------------|--------------------------------------------------------------------|---------|
+| tblUsers          | Username      | Nvarchar(100)  | Unique username                                                    | Primary |
+| tblUsers          | Password      | Nvarchar(100)  | Password                                                           |         |
+Tests to verify: To verify the table is loaded properly we plan to perform the SQL query, `SELECT * FROM tblCPT_Codes;`.  This step will be performed after we have used the website to sign up some "dummy" users.
+
+
+
+
+
+| Table             | Field         | Data Type      | Description                                                        | Key     |
+|-------------------|---------------|----------------|--------------------------------------------------------------------|---------|
+| tblHospitalPrices | CPT_code      | Int            | Code of specific Procedure or Service                              | Foreign |
+| tblHospitalPrices | Hospital_ID   | Int            | Unique Identifier of Hospital                                      | Foreign |
+| tblHospitalPrices | Insurer_ID    | Int            | Unique Identifier of Insurance Plan                                | Foreign |
+| tblHospitalPrices | Cost          | Money          | Insurer's Negotiated Rate for Procedure or Service                 |         |
+| tblHospitalPrices | Gross_charge  | Money          | Hospital's Undiscounted Sticker Price                              |         |
+| tblHospitalPrices | Cash_discount | Decimal        | Discount for Cash Payment Method                                   |         |
+| tblInsurer        | Insurer_ID    | Int            | Primary Key of Insurer table                                       | Primary |
+| tblInsurer        | Name          | Nvarchar(100)  | Name of Insurer                                                    |         |
+| tblInsurer        | Detailed      | Nvarchar(200)  | Plan Name                                                          |         |
+| tblHospitals      | Hospital_ID   | Int            | Primary Key of Hospital table                                      | Primary |
+| tblHospitals      | Hospital name | Nvarchar(200)  | Name of Hospital                                                   |         |
+| tblCPT_Codes      | CPT_code      | Int            | Current Procedural Terminology codes - Prim Key of CPT_Codes table | Primary |
+| tblCPT_Codes      | Description   | Nvarchar(1000) | Description of Service or Procedure                                |         |
+| tblCPT_Codes      | Category      | Nvarchar(100)  | Category of service or procedure                                   |         |
+| tblUsers          | Username      | Nvarchar(100)  | Unique username                                                    | Primary |
+| tblUsers          | Password      | Nvarchar(100)  | Password                                                           |         |
+
+
+
+
 
 Search Bar Table:
 
