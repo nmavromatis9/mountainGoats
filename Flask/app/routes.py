@@ -150,7 +150,13 @@ def browse_procedure():
     form = MyForm()
     #pass this as parameter to render html, which accesses param as 'var'
     return render_template("browse_procedure.html", var=form)
-    
+
+@app.route("/account",methods =['POST','GET'])
+def user_account():
+    #Call function that uses Flask-WTF’s class FlaskForm
+    form = MyForm()
+    #pass this as parameter to render html, which accesses param as 'var'
+    return render_template("user_account.html", var=form)
 
 #FUNCTIONS:
 
