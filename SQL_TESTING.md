@@ -59,7 +59,7 @@ Description: The final table simply lists users and their associated passwords.
 | users             | email         | TEXT           | Unique username                                                    | Primary |
 | users             | password      | TEXT           | Password                                                           |         |
 
-Tests to verify: To verify the table is loaded properly we plan to perform the SQL query, `SELECT * FROM tblCPT_Codes;`.  This step will be performed after we have used the website to sign up some "dummy" users.
+Tests to verify: To verify the table is loaded properly we plan to perform the SQL query, `SELECT * FROM users;`.  This step will be performed after we have used the website to sign up some "dummy" users.
 
 ---
 
@@ -156,7 +156,41 @@ Post-conditions <br>
 ---
 
 ##### signup
-Description: This method will be used to test the sign up page.  
+Description: This method will be used to test the sign up page.  The user should be able to enter an email or username, and a password.  This information should be added to the login database if it does not already exist.
+
+Parameters: Takes two parameters: a username or email address and a password.
+
+Return values: If username does not already exist in login database, open up user_added.html page with message welcoming the user.  If username already exists in the login database, the message "User Already Exists! Try Again" should be displayed.
+
+Use case name: SignUp page <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Verify that users are able to successfully sign up and that users who already exist are not allowed to sign up again. <br>
+Description <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Test of the signup.html page. <br>
+Pre-conditions <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Two cases: (1) User does not already exist, enter new username and password or (2) User already exists, enter known username and password <br>
+Test Steps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Case: User does not already exist
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Navigate to the SignUp page <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Enter new username and password <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Check that user_added.html renders with welcome message and new user added to user table in login.db <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Case: User already exists
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Navigate to the SignUp page <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Enter known username and password <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Check that "User Already Exists! Try Again" renders and user table in login.db does not change <br>
+Expected result <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For successful sign up, user_added.html renders with welcome message and new user is added to the database.  For an unsuccessful sign up, "User Already Exists! Try Again" renders and databse does not change. <br>
+Actual result <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; New user is able to sign up, existing user is prevented from re-signing up. <br>
+Status (Pass/Fail) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pass <br>
+Notes <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Will need to test multiple users, some using email addresses others using usernames. <br>
+Post-conditions <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; New users are validated in login.db.  Existing users are prevented from signing up and login.db does not change. <br>
+
+
+
+
 
 
 
