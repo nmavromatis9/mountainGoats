@@ -169,11 +169,11 @@ Description <br>
 Pre-conditions <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Two cases: (1) User does not already exist, enter new username and password or (2) User already exists, enter known username and password <br>
 Test Steps <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Case: User does not already exist
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Case: User does not already exist <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Navigate to the SignUp page <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Enter new username and password <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Check that user_added.html renders with welcome message and new user added to user table in login.db <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Case: User already exists
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Case: User already exists <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Navigate to the SignUp page <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Enter known username and password <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Check that "User Already Exists! Try Again" renders and user table in login.db does not change <br>
@@ -188,7 +188,38 @@ Notes <br>
 Post-conditions <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; New users are validated in login.db.  Existing users are prevented from signing up and login.db does not change. <br>
 
+##### login
+Description: This method will be used to test the login page.  The user should be able to enter an email or username, and a password.  This information should be checked against the login.db database.  If a valid username and password is entered, logged_in.html should be rendered.  If an invalid username or password is entered, bad_login.html should be rendered.
 
+Parameters: Takes two parameters: a username/email address and a password.
+
+Return values: Should render either logged_in.html for valid username and password, and render bad_login for invalid username or password.
+
+Use case name: Login page <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Verify that users are able to successfully login with valid credentials and that users with invalid credentials are not. <br>
+Description <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Test of the login.html page. <br>
+Pre-conditions <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Two cases: (1) User has valid credentials or (2) User has invalid credentials <br>
+Test Steps <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Case: User has valid credentials <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Navigate to the Login page <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Enter valid username/email and password <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Check that logged_in.html renders with welcome message. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Case: User already exists <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Navigate to the Login page <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Enter invalid username/email and password <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Check that bad_login.html renders <br>
+Expected result <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For successful log in, logged_in.html renders with welcome message.  For an unsuccessful log in, bad_login.html renders. <br>
+Actual result <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Users with valid credentials are able to log in. Users with invalid credentials are not able to log in. <br>
+Status (Pass/Fail) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pass <br>
+Notes <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Will need to test multiple users, some with valid usernames but invalid passwords and vice versa. <br>
+Post-conditions <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Users with valid credentials are able to login.  Users with invalid credentials are not allowed to log in. <br>
 
 
 
