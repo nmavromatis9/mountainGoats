@@ -81,7 +81,7 @@ Pre-conditions <br>
 Test Steps <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Navigate to the browse by procedure page <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Search by parameter (test a variety of parameter values, procedures and CPT codes) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Check that results are correct and results page (table) renders <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Check that results are correct and results page (table) renders.  Plan on creating unit tests.  <br>
 Expected result <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Table with correct results renders correctly <br>
 Actual result <br>
@@ -111,7 +111,7 @@ Pre-conditions <br>
 Test Steps <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Navigate to browse by insurer page <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Search by parameter (test a variety of parameter values, insurers) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Check that results are correct and results page (table) renders <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Check that results are correct and results page (table) renders. Plan on creating unit tests. <br>
 Expected result <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Table with correct results renders correctly <br>
 Actual result <br>
@@ -141,7 +141,7 @@ Pre-conditions <br>
 Test Steps <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Navigate to browse by hospital page <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Search by parameter (test a variety of parameter values, hospitals) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Check that results are correct and results page (table) renders <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Check that results are correct and results page (table) renders. Plan on creating unit tests. <br>
 Expected result <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Table with correct results renders correctly <br>
 Actual result <br>
