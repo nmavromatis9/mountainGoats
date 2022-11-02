@@ -12,14 +12,15 @@ Our website will utilize two sqlite databases consisting of 5 tables total.  The
 - ##### tblHospitalPrices
 Description: This is the main table of the database.  It lists the prices of procedures and services by hospital and insurer.  Three prcies are included cost, gross charge, and cash discount.
 
-|   Table           |   Field       |   Data Type    |   Description                                          |   Key   |
-|-------------------|---------------|----------------|--------------------------------------------------------|---------|
-| tblHospitalPrices | CPT_code      | Int            | Code of specific Procedure or Service                  | Foreign |
-| tblHospitalPrices | Hospital_ID   | Int            | Unique Identifier of Hospital                          | Foreign |
-| tblHospitalPrices | Insurer_ID    | Int            | Unique Identifier of Insurance Plan                    | Foreign |
-| tblHospitalPrices | Cost          | Money          | Insurer's Negotiated Rate for Procedure or Service     |         |
-| tblHospitalPrices | Gross_charge  | Money          | Hospital's Undiscounted Sticker Price                  |         |
-| tblHospitalPrices | Cash_discount | Decimal        | Discount for Cash Payment Method                       |         | 
+|   Table           |   Field       |   Data Type    |   Description                                          |   Key                     |
+|-------------------|---------------|----------------|--------------------------------------------------------|---------------------------|
+| tblHospitalPrices | T             | Int            | Primary Key of Hospital Prices Table                   | Primary                   |
+| tblHospitalPrices | CPT_code      | Int            | Code of specific Procedure or Service                  | Foreign from tblCPT_Codes |
+| tblHospitalPrices | Hospital_ID   | Int            | Unique Identifier of Hospital                          | Foreign from tblHospitals |
+| tblHospitalPrices | Insurer_ID    | Int            | Unique Identifier of Insurance Plan                    | Foreign from tblInsurer   |
+| tblHospitalPrices | Cost          | Money          | Insurer's Negotiated Rate for Procedure or Service     |                           |
+| tblHospitalPrices | Gross_charge  | Money          | Hospital's Undiscounted Sticker Price                  |                           |
+| tblHospitalPrices | Cash_discount | Decimal        | Discount for Cash Payment Method                       |                           |
 
 Tests to verify: To verify the table is loaded properly we plan to perform the SQL query, `SELECT * FROM tblHospitalPrices;`.  We will then compare this data with the data present in the Excel file located in the DB_XLSX_Files directory.
 
@@ -64,7 +65,6 @@ Tests to verify: To verify the table is loaded properly we plan to perform the S
 ---
 
 #### List of Data Access Methods
-Our website will utilize four methods to access the underlying sqlite database
 ##### getCPT
 Description: This method will be used on the browse by procedure page to pull up a table showing the price of a procedure.  The method executes a SQL query producing a table where rows are populated by hospitals and the columns are populated by rates (insurers, self-pay, charge).
 
