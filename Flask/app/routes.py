@@ -8,6 +8,10 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import flask_login
 
+## Import "prefix" code into your Flask app to make your app usable when running
+## Flask either in the csel.io virtual machine or running on your local machine.
+import prefix
+
 
 
 
@@ -25,6 +29,17 @@ import flask_login
 
 #Script below by Nicolas Mavromatis. Please add name to script sections you author.
 app = Flask(__name__)
+
+# Insert the wrapper for handling PROXY when using csel.io virtual machine
+# Calling this routine will have no effect if running on local machine
+prefix.use_PrefixMiddleware(app) 
+
+# test route to show prefix settings
+@app.route('/prefix_url')
+def prefix_url():
+    return 'The URL for this page is {}'.format(url_for('prefix_url'))
+
+
 app.secret_key = 'super secret string'  # Change this!
 login_manager = flask_login.LoginManager()
 
@@ -37,8 +52,8 @@ def index():
     #Call function that uses Flask-WTF’s class FlaskForm
     form = MyForm()
     #pass this as parameter to render html, which accesses param as 'var'
-    return render_template("index.html", var=form)
-
+    # return render_template("index.html", var=form)
+    return render_template("index.html", var=form, path=url_for('index'))
 
 @app.route('/results', methods=['GET', 'POST'])
 def CPTresults():
@@ -83,7 +98,7 @@ def login():
     except:
         print("BAD CONNECTION")
     if request.method == 'GET':
-        return render_template("login.html")
+        return render_template("login.html", path=url_for('index'))
     
     name = request.form['email']
     passwo=request.form['password']
@@ -93,25 +108,26 @@ def login():
         user = User()
         user.id = name
         flask_login.login_user(user)
-        return redirect('https://coding.csel.io/user/nima6629/proxy/5000/protected')
-
-    return render_template("bad_login.html")
+        # return redirect('https://coding.csel.io/user/nima6629/proxy/5000/protected')
+        return redirect(url_for('protected'))
+        
+    return render_template("bad_login.html", path=url_for('index'))
 
 @app.route('/protected')
 @flask_login.login_required
 def protected():
     print(flask_login.current_user.id)
-    return render_template("logged_in.html", usr=flask_login.current_user.id)
+    return render_template("logged_in.html", usr=flask_login.current_user.id, path=url_for('index'))
 
 @app.route('/logout')
 def logout():
     flask_login.logout_user()
-    return render_template("logged_out.html")
+    return render_template("logged_out.html", path=url_for('index'))
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'GET':
-        return render_template("signup.html")
+        return render_template("signup.html", path=url_for('index'))
     
     name = request.form['signupE']
     passwo=request.form['signupP']
@@ -135,28 +151,28 @@ def browse_insurer():
     #Call function that uses Flask-WTF’s class FlaskForm
     form = MyForm2()
     #pass this as parameter to render html, which accesses param as 'var'
-    return render_template("browse_insurer.html", var=form)
+    return render_template("browse_insurer.html", var=form, path=url_for('index'))
 
 @app.route("/browse-hospital",methods =['POST','GET'])
 def browse_hospital():
     #Call function that uses Flask-WTF’s class FlaskForm
     form = MyForm3()
     #pass this as parameter to render html, which accesses param as 'var'
-    return render_template("browse_hospital.html", var=form)
+    return render_template("browse_hospital.html", var=form, path=url_for('index'))
 
 @app.route("/browse-procedure",methods =['POST','GET'])
 def browse_procedure():
     #Call function that uses Flask-WTF’s class FlaskForm
     form = MyForm()
     #pass this as parameter to render html, which accesses param as 'var'
-    return render_template("browse_procedure.html", var=form)
+    return render_template("browse_procedure.html", var=form, path=url_for('index'))
 
 @app.route("/account",methods =['POST','GET'])
 def user_account():
     #Call function that uses Flask-WTF’s class FlaskForm
     form = MyForm()
     #pass this as parameter to render html, which accesses param as 'var'
-    return render_template("user_account.html", var=form)
+    return render_template("user_account.html", var=form, path=url_for('index'))
 
 #FUNCTIONS:
 
@@ -295,6 +311,9 @@ def addUser(name, passw):
         
         
         
+
+        
+#### Probably delete all of this now that prefix is in separate file         
 ###############################################################################
 ## This section allows us to set the prefix information to access
 ## url's that access our JupyterHub environment.
@@ -304,21 +323,21 @@ def addUser(name, passw):
 ## make the 'SCRIPT_NAME' an empty string.
 ##
 
-class PrefixMiddleware(object):
+# class PrefixMiddleware(object):
 
-   def __init__(self, app, prefix=''):
-       self.app = app
-       self.prefix = prefix
+#    def __init__(self, app, prefix=''):
+#        self.app = app
+#        self.prefix = prefix
 
-   def __call__(self, environ, start_response):
-       # set the prefix for all url to the Jupyterhub URL for my virtual machine
-       # this path is set to my user [nima6629] and port [3308]
-       # (see the code at bottom to see how port is set to 3308 instead of 5000)
-       environ[''] = "/user/nima6629/proxy/5000/"
+#    def __call__(self, environ, start_response):
+#        # set the prefix for all url to the Jupyterhub URL for my virtual machine
+#        # this path is set to my user [nima6629] and port [3308]
+#        # (see the code at bottom to see how port is set to 3308 instead of 5000)
+#        environ[''] = "/user/nima6629/proxy/5000/"
 
-       # call the default processing
-       return self.app(environ, start_response)
+#        # call the default processing
+#        return self.app(environ, start_response)
 
 # insert our proxy setting url class as wrapper to the app
-app.wsgi_app = PrefixMiddleware(app.wsgi_app)
-
+# app.wsgi_app = PrefixMiddleware(app.wsgi_app)
+#### End of stuff to delete

@@ -5,13 +5,13 @@
 </head>
 <body>
     <div class="topnav">
-      <a class="active" href="https://coding.csel.io/user/nima6629/proxy/5000/">Home</a>
-      <a href="https://coding.csel.io/user/nima6629/proxy/5000/browse-procedure">Browse By Procedure</a>
-      <a href="https://coding.csel.io/user/nima6629/proxy/5000/browse-insurer">Browse By Insurer</a>
-      <a href="https://coding.csel.io/user/nima6629/proxy/5000/browse-hospital">Browse By Hospital</a>
-      <a href="https://coding.csel.io/user/nima6629/proxy/5000/logins">Login</a>
-      <a href="https://coding.csel.io/user/nima6629/proxy/5000/signup">SignUp</a>
-      <a href="https://coding.csel.io/user/nima6629/proxy/5000/logout">Logout</a>
+      <a class="active" href="{{ path }}">Home</a>
+      <a href="{{ path }}browse-procedure">Browse By Procedure</a>
+      <a href="{{ path }}browse-insurer">Browse By Insurer</a>
+      <a href="{{ path }}browse-hospital">Browse By Hospital</a>
+      <a href="{{ path }}logins">Login</a>
+      <a href="{{ path }}signup">SignUp</a>
+      <a href="{{ path }}logout">Logout</a>
       <a href="#profile">User Profile</a>
       <a href="#about">About</a>
     </div>
@@ -19,7 +19,7 @@
     </div>
         <!--action is where the results of the search box are sent, upon post -->
     <!--Uses flask-WTF's FlaskForm class, MyFormObj.name and MyFormObj.label are variables def'd in MyForm() -->
-    <form method="POST" action="https://coding.csel.io/user/nima6629/proxy/5000/insurer-results">
+    <form method="POST" action="{{ path }}insurer-results">
     {{ var.csrf_token }}
     {{ var.name.label }} {{ var.name(size=20) }}
     <input type="submit" value="Submit" id="insurerSearch">
