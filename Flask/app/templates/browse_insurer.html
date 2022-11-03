@@ -4,6 +4,7 @@
     <title>Home</title>
 </head>
 <body>
+    
     <div class="topnav">
       <a class="active" href="{{ path }}">Home</a>
       <a href="{{ path }}browse-procedure">Browse By Procedure</a>
@@ -14,6 +15,11 @@
       <a href="{{ path }}logout">Logout</a>
       <a href="#profile">User Profile</a>
       <a href="#about">About</a>
+    </div>
+    <div class="browseInsurers">
+        {% for i in p %}
+        <a href={{i}}>{{ n[loop.index0] }}</a>
+        {% endfor %}   
     </div>
     <div id="welcome"><p>Browse or Search by Insurer:</p>    
     </div>

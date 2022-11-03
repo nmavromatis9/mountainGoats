@@ -19,6 +19,7 @@ import prefix
 #testI() converts all these to links, then tests one
 #browseInsurer() should populate HTML with these links automatically.  
 
+#Browse by insurers is now functional. TO DO: follow template for other browse by pages.
 
 
 
@@ -148,28 +149,10 @@ def signup():
          
         return render_template("user_added.html", usr=name, path=url_for('index'))
 
-@app.route('/testI', methods=['GET', 'POST'])
-def testI():
-    res=getAllInsurers()
-    paths=[]
-    for i in res:
-        i=str(i)
-        i=i[2:len(i)-3]
-        print(i)
-        paths.append((url_for('browseIns', insurer=str(i))))
-        
-    #path=url_for('browseIns', insurer="aetna")
-    #return redirect(url_for('browseIns', insurer="aetna"))
-    #return(paths)
-    return redirect(paths[0])
-    #return redirect((url_for('browseIns', insurer="aetna")))
 
 @app.route('/browseInsurers/<insurer>', methods=['GET', 'POST'])
 def browseIns(insurer):
-    #s=""
     res=getInsurers(insurer)
-    #for i in res:
-        #s+='<p>'+str(i)+'</p>'
     return render_template("table2.html", res=res)
 
 #Routes to generate browse by pages
@@ -177,8 +160,22 @@ def browseIns(insurer):
 def browse_insurer():
     #Call function that uses Flask-WTF’s class FlaskForm
     form = MyForm2()
-    #pass this as parameter to render html, which accesses param as 'var'
-    return render_template("browse_insurer.html", var=form, path=url_for('index'))
+    #Generate dynamic links
+    #Get all insurers from SQL call, then...
+    res=getAllInsurers()
+    paths=[]
+    names=[]
+    #first, convert tuple to string, then take slice,
+    #then create links
+    for i in res:
+        i=str(i)
+        i=i[2:len(i)-3]
+        names.append(i)
+        paths.append((url_for('browseIns', insurer=str(i))))
+        
+    #pass these parameters to render template.
+    #p is path length for <a> links, n is names variable
+    return render_template("browse_insurer.html", var=form, p=paths, n=names, path=url_for('index'))
 
 @app.route("/browse-hospital",methods =['POST','GET'])
 def browse_hospital():
