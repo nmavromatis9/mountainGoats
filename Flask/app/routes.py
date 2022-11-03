@@ -16,9 +16,8 @@ import prefix
 #How to generate "browse by" pages. I made some starter template functions for "insurers"
 
 #getAllInsurers() returns a list of all insurers after SQL search as tuples.
-#testI() converts all these to links, then tests one
+#browseIns(insurer) passes parameter as URL to make table
 #browseInsurer() should populate HTML with these links automatically.  
-
 #Browse by insurers is now functional. TO DO: follow template for other browse by pages.
 
 
