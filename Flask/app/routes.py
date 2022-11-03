@@ -12,11 +12,17 @@ import flask_login
 ## Flask either in the csel.io virtual machine or running on your local machine.
 import prefix
 
+#READ ME:*************************************************************
+#How to generate "browse by" pages. I made some starter template functions for "insurers"
+
+#getAllInsurers() returns a list of all insurers after SQL search as tuples.
+#testI() converts all these to links, then tests one
+#browseInsurer() should populate HTML with these links automatically.  
 
 
 
 
-#Script by: Nicolas Mavromatis, nima6629 
+#Search bar, Login, Signup, and basic Flask Script by: Nicolas Mavromatis, nima6629 
 #Flask script
 #To access webpages:
 #https://coding.CSEL.io/user/nima6629/proxy/5000
@@ -86,10 +92,6 @@ def Hospital_results():
         return render_template("table.html", res=res);
         
 
-@app.route('/hello')
-def hello():
-    return 'Hello, World'
-
 @app.route('/logins', methods=['GET', 'POST'])
 def login():
     try:
@@ -146,6 +148,31 @@ def signup():
          
         return render_template("user_added.html", usr=name, path=url_for('index'))
 
+@app.route('/testI', methods=['GET', 'POST'])
+def testI():
+    res=getAllInsurers()
+    paths=[]
+    for i in res:
+        i=str(i)
+        i=i[2:len(i)-3]
+        print(i)
+        paths.append((url_for('browseIns', insurer=str(i))))
+        
+    #path=url_for('browseIns', insurer="aetna")
+    #return redirect(url_for('browseIns', insurer="aetna"))
+    #return(paths)
+    return redirect(paths[0])
+    #return redirect((url_for('browseIns', insurer="aetna")))
+
+@app.route('/browseInsurers/<insurer>', methods=['GET', 'POST'])
+def browseIns(insurer):
+    #s=""
+    res=getInsurers(insurer)
+    #for i in res:
+        #s+='<p>'+str(i)+'</p>'
+    return render_template("table2.html", res=res)
+
+#Routes to generate browse by pages
 @app.route("/browse-insurer",methods =['POST','GET'])
 def browse_insurer():
     #Call function that uses Flask-WTF’s class FlaskForm
@@ -220,6 +247,18 @@ def getHospitals(searchTerm):
     
     cur = con.cursor()
     r3=cur.execute("SELECT c.CPT_CODE, c.Description, c.Category, t.Hospital_name, i.Name, h.Cost, h.Gross_charge, h.Cash_discount FROM tblCPT c, tblHospitalPrices h, tblInsurer i, tblHospitals t  WHERE ((t.Hospital_name LIKE '%'||?||'%') AND (c.CPT_CODE==h.CPT_CODE) AND (h.Hospital_ID==t.Hospital_ID) AND (h.InsurerID==i.Insurer_ID) AND (h.cost IS NOT NULL OR h.Gross_Charge IS NOT NULL OR h.Cash_discount IS NOT NULL))", (searchTerm,))
+    results=r3.fetchall()
+    con.close()
+    return results
+
+#Functions to get all of a category to populate Browse By pages
+def getAllInsurers():
+    try:
+        con = sqlite3.connect("../../DB_Setup/hospital.db")
+    except:
+        print("ERROR CONNECTING TO DB")
+    cur = con.cursor()
+    r3=cur.execute("SELECT DISTINCT i.Name FROM tblCPT c, tblHospitalPrices h, tblInsurer i, tblHospitals t  WHERE (h.InsurerID==i.Insurer_ID)")
     results=r3.fetchall()
     con.close()
     return results
