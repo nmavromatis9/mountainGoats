@@ -144,7 +144,7 @@ def signup():
     else:
         addUser(name, passwo)
          
-        return render_template("user_added.html", usr=name)
+        return render_template("user_added.html", usr=name, path=url_for('index'))
 
 @app.route("/browse-insurer",methods =['POST','GET'])
 def browse_insurer():
