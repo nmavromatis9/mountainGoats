@@ -17,13 +17,18 @@
     </div>
     <div id="welcome"><p>Browse or Search by Procedure:</p>    
     </div>
+    <div class="browseCPT">
+        {% for i in p %}
+        <a href={{i}}>{{ n[loop.index0] }}</a>
+        {% endfor %}   
+    </div>
         <!--action is where the results of the search box are sent, upon post -->
     <!--Uses flask-WTF's FlaskForm class, MyFormObj.name and MyFormObj.label are variables def'd in MyForm() -->
     <form method="POST" action="{{ path }}results">
     {{ var.csrf_token }}
     {{ var.name.label }} {{ var.name(size=20) }}
     <input type="submit" value="Submit" id="procedureSearch">
-        <p>TO DO: Make browse List!</p>
+        <p>TO DO: Make Fix browse list formatting</p>
 </form>
 </body>
 </html>

@@ -13,16 +13,9 @@ import flask_login
 import prefix
 
 #READ ME:*************************************************************
-#How to generate "browse by" pages. I made some starter template functions for "insurers"
 
-#getAllInsurers() returns a list of all insurers after SQL search as tuples.
-#browseIns(insurer) passes parameter as URL to make table
-#browseInsurer() should populate HTML with these links automatically.  
-#Browse by insurers is now functional. TO DO: follow template for other browse by pages.
+#Search bar, Login, Signup, Browse by page generation and basic Flask Script by: Nicolas Mavromatis, nima6629 
 
-
-
-#Search bar, Login, Signup, and basic Flask Script by: Nicolas Mavromatis, nima6629 
 #Flask script
 #To access webpages:
 #https://coding.CSEL.io/user/nima6629/proxy/5000
@@ -33,7 +26,6 @@ import prefix
 #https://wtforms.readthedocs.io/en/2.3.x/fields/
 #https://pypi.org/project/Flask-Login/
 
-#Script below by Nicolas Mavromatis. Please add name to script sections you author.
 app = Flask(__name__)
 
 # Insert the wrapper for handling PROXY when using csel.io virtual machine
@@ -154,7 +146,18 @@ def browseIns(insurer):
     res=getInsurers(insurer)
     return render_template("table2.html", res=res)
 
+@app.route('/browseHospitals/<hospital>', methods=['GET', 'POST'])
+def browseHosp(hospital):
+    res=getHospitals(hospital)
+    return render_template("table2.html", res=res)
 #Routes to generate browse by pages
+
+@app.route('/browseCPT/<CPT>', methods=['GET', 'POST'])
+def browseCPT(CPT):
+    res=getCPT(CPT)
+    return render_template("table2.html", res=res)
+#Routes to generate browse by pages
+
 @app.route("/browse-insurer",methods =['POST','GET'])
 def browse_insurer():
     #Call function that uses Flask-WTF’s class FlaskForm
@@ -180,15 +183,43 @@ def browse_insurer():
 def browse_hospital():
     #Call function that uses Flask-WTF’s class FlaskForm
     form = MyForm3()
+    #get all hospitals to generate links dynamically
+    res=getAllHospitals()
+    paths=[]
+    names=[]
+    #first, convert tuple to string, then take slice,
+    #then create links
+    for i in res:
+        i=str(i)
+        i=i[2:len(i)-3]
+        names.append(i)
+        paths.append((url_for('browseHosp', hospital=str(i))))
     #pass this as parameter to render html, which accesses param as 'var'
-    return render_template("browse_hospital.html", var=form, path=url_for('index'))
+    return render_template("browse_hospital.html", var=form, p=paths, n=names, path=url_for('index'))
 
 @app.route("/browse-procedure",methods =['POST','GET'])
 def browse_procedure():
     #Call function that uses Flask-WTF’s class FlaskForm
     form = MyForm()
+    res=getAllCPT()
+    paths=[]
+    names=[]
+    #first, convert tuple to string, then take slice,
+    #then create links
+    #Must match description to code for names.
+    try:
+        con = sqlite3.connect("../../DB_Setup/hospital.db")
+    except:
+        print("ERROR CONNECTING TO DB")
+    cur = con.cursor()
+    for i in res:
+        i=str(i)
+        i=i[1:len(i)-2]
+        r3=cur.execute("SELECT DISTINCT c.CPT_CODE, c.Description FROM tblCPT c, tblHospitalPrices h, tblInsurer i, tblHospitals t WHERE ((c.CPT_CODE=?) AND (c.CPT_CODE==h.CPT_CODE) AND (h.Hospital_ID==t.Hospital_ID) AND (h.InsurerID==i.Insurer_ID) AND (h.cost IS NOT NULL OR h.Gross_Charge IS NOT NULL OR h.Cash_discount IS NOT NULL))", (i,))
+        names.append(r3.fetchone())
+        paths.append((url_for('browseCPT', CPT=str(i))))
     #pass this as parameter to render html, which accesses param as 'var'
-    return render_template("browse_procedure.html", var=form, path=url_for('index'))
+    return render_template("browse_procedure.html", var=form, p=paths, n=names, path=url_for('index'))
 
 @app.route("/account",methods =['POST','GET'])
 def user_account():
@@ -255,6 +286,28 @@ def getAllInsurers():
         print("ERROR CONNECTING TO DB")
     cur = con.cursor()
     r3=cur.execute("SELECT DISTINCT i.Name FROM tblCPT c, tblHospitalPrices h, tblInsurer i, tblHospitals t  WHERE (h.InsurerID==i.Insurer_ID)")
+    results=r3.fetchall()
+    con.close()
+    return results
+
+def getAllHospitals():
+    try:
+        con = sqlite3.connect("../../DB_Setup/hospital.db")
+    except:
+        print("ERROR CONNECTING TO DB")
+    cur = con.cursor()
+    r3=cur.execute("SELECT DISTINCT t.Hospital_name FROM tblCPT c, tblHospitalPrices h, tblInsurer i, tblHospitals t  WHERE (h.Hospital_ID==t.Hospital_ID)")
+    results=r3.fetchall()
+    con.close()
+    return results
+
+def getAllCPT():
+    try:
+        con = sqlite3.connect("../../DB_Setup/hospital.db")
+    except:
+        print("ERROR CONNECTING TO DB")
+    cur = con.cursor()
+    r3=cur.execute("SELECT DISTINCT c.CPT_CODE FROM tblCPT c, tblHospitalPrices h, tblInsurer i, tblHospitals t  WHERE ( (c.CPT_CODE==h.CPT_CODE) AND (h.Hospital_ID==t.Hospital_ID) AND (h.InsurerID==i.Insurer_ID) )")
     results=r3.fetchall()
     con.close()
     return results
@@ -348,31 +401,4 @@ def addUser(name, passw):
         
 
         
-#### Probably delete all of this now that prefix is in separate file         
-###############################################################################
-## This section allows us to set the prefix information to access
-## url's that access our JupyterHub environment.
-##
-## Every call to url_for will be given the prefix for accessing via PROXY.
-## Before releasing this to an external site or use in your local machine,
-## make the 'SCRIPT_NAME' an empty string.
-##
-
-# class PrefixMiddleware(object):
-
-#    def __init__(self, app, prefix=''):
-#        self.app = app
-#        self.prefix = prefix
-
-#    def __call__(self, environ, start_response):
-#        # set the prefix for all url to the Jupyterhub URL for my virtual machine
-#        # this path is set to my user [nima6629] and port [3308]
-#        # (see the code at bottom to see how port is set to 3308 instead of 5000)
-#        environ[''] = "/user/nima6629/proxy/5000/"
-
-#        # call the default processing
-#        return self.app(environ, start_response)
-
-# insert our proxy setting url class as wrapper to the app
-# app.wsgi_app = PrefixMiddleware(app.wsgi_app)
-#### End of stuff to delete
+#### Prefix code to correctly route URL is in prefix.py

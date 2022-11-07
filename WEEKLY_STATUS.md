@@ -31,7 +31,10 @@ Patrick and Cooper will start working on the scripts for user login and the brow
 We have settled on Flask for the backend framework, and heroku. We still need to look into how to integrate flask with Heroku and some external database. 
 
 #### Week 11 Update (31 Oct to 6 Nov)
-During the sixth week, Nick got a basic version of Flask running, created a search bar for each page that runs SQL, and created a basic login and signup system. Patrick reviewed Milestone 5 requirements and got started on it. Nick researched Bootstrap and started designing a navigation bar.
+During the sixth week, Nick got a basic version of Flask running, created a search bar for each page that runs SQL, and created a basic login and signup system. Patrick reviewed Milestone 5 requirements and got started on it. Cooper researched Bootstrap and started designing a navigation bar.
+
+#### Week 12 Update (7 Nov to 14 Nov)
+During the seventh week, Nick created the python script to dynamically generate each "browse by link" from SQL and populate each browse by page with these links automatically. 
 
 <figure>
   <IMG SRC="TrelloSC.PNG">
