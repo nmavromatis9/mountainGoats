@@ -7,10 +7,10 @@
 ---
 #### Week 6 Update (26 Sept to 2 Oct)
     
-During our first week, we collected JSON and csv files of medical prices for several hospitals, Medicare, and Medicaid.  We also gathered CPT code descriptions so we know what procedure each billing code represents.  Data from the JSON and csv files was extracted with python scripts into an excel file.  Each sheet in the Excel file will represent a different table in a SQL database.  A data dictionary was also created to describe the data.
+During our first week, Patrick collected JSON and csv files of medical prices for several hospitals, Medicare, and Medicaid.  He also gathered CPT code descriptions so we know what procedure each billing code represents.  Data from the JSON and csv files was extracted by Nick with python scripts into an excel file.  Each sheet in the Excel file will represent a different table in a SQL database.  A data dictionary was also created to describe the data by Cooper, who organized the table structure.
 
 #### Week 7 Update (3 Oct to 9 Oct)
-During the second week, we wrote a python script that created a sqlite database file. We made a first iteration of placing tasks on Trello.  We also started to brainstorm what features the app should have and the major web pages.
+During the second week, Nick wrote a python script that created a sqlite database file. We made a first iteration of placing tasks on Trello.  We also started to brainstorm what features the app should have and the major web pages.
 
 Plans for next week include continuing to learn Flask, the basics of SQL, and working early on milestone 4 to develop web page structure. We feel we are in an early stage and still learning many new tools so progress is slow. 
 
@@ -26,15 +26,14 @@ During the fourth week, we finalized the web page layout design. We also started
 We decided on what happens when a user logs in. After a successful login, it should return to the welcome page. 
 
 #### Week 10 Update (24 Oct to 30 Oct)
-During the fifth week, we started planning milestone 5 and how the SQL queries should function. Nick also started working on python scripts to run SQL in the main page search bar.
-Patrick and Cooper will start working on the scripts for user login and the browse by pages.
+During the fifth week, we started planning milestone 5 and how the SQL queries should function. Nick also worked on python scripts to run SQL in the main page search bar.
 We have settled on Flask for the backend framework, and heroku. We still need to look into how to integrate flask with Heroku and some external database. 
 
 #### Week 11 Update (31 Oct to 6 Nov)
 During the sixth week, Nick got a basic version of Flask running, created a search bar for each page that runs SQL, and created a basic login and signup system. Patrick reviewed Milestone 5 requirements and got started on it. Cooper researched Bootstrap and started designing a navigation bar.
 
 #### Week 12 Update (7 Nov to 14 Nov)
-During the seventh week, Nick created the python script to dynamically generate each "browse by link" from SQL and populate each browse by page with these links automatically. 
+During the seventh week, Nick created the python script to dynamically generate each "browse by link" from SQL and populate each browse by page with these links automatically. Cooper agreed to continue to work on the CSS, and Patrick agreed to work on other extra features such as a page to add/update results to the database. 
 
 <figure>
   <IMG SRC="TrelloSC.PNG">
