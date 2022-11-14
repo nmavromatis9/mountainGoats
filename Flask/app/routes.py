@@ -276,10 +276,43 @@ def get_price():
     # res will be sent back to admin.html as json object
     return res
 
+@app.route("/set_price", methods=["POST"])
+def set_price():
+    # req will take in the post from admin.html, get_json() will parse the request
+    # to a python dictionary
+    req = request.get_json()
+    print(req)
+    
+    # SQL update statement to set the new price
+    # extract values from dictionary
+    hospital = req["hospital"]
+    insurer = req["insurer"]
+    procedure = req["procedure"]
+    desired_price = req["desired_price"]
+    
+    # connect to database
+    try:
+        con = sqlite3.connect("../../DB_Setup/hospital.db")
+    except:
+        print("ERROR CONNECTING TO DB")
+    
+    # stmt to update the database
+    cur = con.cursor()
+    stmt = cur.execute("UPDATE tblHospitalPrices SET Cost = ? WHERE Hospital_ID = ( SELECT Hospital_ID FROM tblHospitals WHERE Hospital_name = ? ) AND InsurerID = ( SELECT Insurer_ID FROM tblInsurer WHERE name = ? ) AND CPT_code = ( SELECT CPT_code FROM tblCPT WHERE Description = ? ) ", (desired_price, hospital, insurer, procedure))
+    
+    # query to get the updated price
+    query = cur.execute("SELECT Cost from tblHospitalPrices WHERE Hospital_ID = ( SELECT Hospital_ID FROM tblHospitals WHERE Hospital_name = ? ) AND InsurerID = ( SELECT Insurer_ID FROM tblInsurer WHERE name = ? ) AND CPT_code = ( SELECT CPT_code FROM tblCPT WHERE Description = ? ) ", (hospital, insurer, procedure))
 
+    new_price=query.fetchall()
+    con.commit()
+    con.close()
 
-
-
+    # Response with price in JSON form, status code 200
+    res = make_response(jsonify({"new_price" : new_price}), 200)
+    # res will be sent back to admin.html as json object
+    return res
+    
+    
 
 ################################################################################################################################
 ################################################################################################################################

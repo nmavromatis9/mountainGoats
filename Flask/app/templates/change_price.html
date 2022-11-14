@@ -14,9 +14,12 @@
       <input type="text" id="insurer" name="insurer"><br><br>
       <label for="procedure">Procedure:</label>
       <input type="text" id="procedure" name="procedure"><br><br>
-      <button id="getPrice" type="button" onclick="get_price();">Get Price</button><br><br>
-      <p>Price: $<strong id="price"></strong><p>
-  
+      <button id="getPrice" type="button" onclick="get_price();">Get Price</button><br>
+      <p>Current Price: $<strong id="price"></strong></p>
+      <label for="desired_price">Desired Price:</label>
+      <input type="text" id="desired_price" name="desired_price"><br><br>
+      <button id="setPrice" type="button" onclick="set_price();">Set Price</button><br>
+      <p>New Set Price: $<strong id="new_price"></strong></p>
     
   
   </body>
