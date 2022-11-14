@@ -8,6 +8,9 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import flask_login
 
+# The following are used for the admin page
+from flask import render_template, request, jsonify, make_response
+
 ## Import "prefix" code into your Flask app to make your app usable when running
 ## Flask either in the csel.io virtual machine or running on your local machine.
 import prefix
@@ -227,6 +230,61 @@ def user_account():
     form = MyForm()
     #pass this as parameter to render html, which accesses param as 'var'
     return render_template("user_account.html", var=form, path=url_for('index'))
+
+
+
+################################################################################################################################
+################################################################################################################################
+################################################################################################################################
+################################################################################################################################
+
+@app.route("/admin")
+def admin():
+    return render_template("change_price.html")
+
+
+@app.route("/get_price", methods=["POST"])
+def get_price():
+    
+    # req will take in the post from admin.html, get_json() will parse the request
+    # to a python dictionary
+    req = request.get_json()
+    print(req)
+    
+    # SQL query to get the price
+    # extract values from dictionary
+    hospital = req["hospital"]
+    insurer = req["insurer"]
+    procedure = req["procedure"]
+    
+    # connect to database
+    try:
+        con = sqlite3.connect("../../DB_Setup/hospital.db")
+    except:
+        print("ERROR CONNECTING TO DB")
+    
+    # query the database for price
+    cur = con.cursor()
+    query = cur.execute("SELECT Cost from tblHospitalPrices WHERE Hospital_ID = ( SELECT Hospital_ID FROM tblHospitals WHERE Hospital_name = ? ) AND InsurerID = ( SELECT Insurer_ID FROM tblInsurer WHERE name = ? ) AND CPT_code = ( SELECT CPT_code FROM tblCPT WHERE Description = ? ) ", (hospital, insurer, procedure))
+    price=query.fetchall()
+    print(price)
+    con.close()
+    
+    
+    # Response with price in JSON form, status code 200
+    res = make_response(jsonify({"price" : price}), 200)
+    # res will be sent back to admin.html as json object
+    return res
+
+
+
+
+
+
+################################################################################################################################
+################################################################################################################################
+################################################################################################################################
+################################################################################################################################
 
 #FUNCTIONS:
 

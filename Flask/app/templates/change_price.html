@@ -1,0 +1,24 @@
+<!-- Useful information on AJAX with jQuery used to update webpage by calling server side fucntions -->
+<!-- https://flask.palletsprojects.com/en/2.0.x/patterns/jquery/ -->
+
+<html>
+  <head>
+  <script src="static/javascript/admin_javascript.js"></script>
+  <!-- <link rel="stylesheet" href="static/css/lab_javascript.css"> -->
+  </head>
+  <body>
+      <h1>Form to change price of procedure/service</h1>
+      <label for="hosp_name">Hospital:</label>
+      <input type="text" id="hosp_name" name="hosp_name"><br><br>
+      <label for="insurer">Insurer:</label>
+      <input type="text" id="insurer" name="insurer"><br><br>
+      <label for="procedure">Procedure:</label>
+      <input type="text" id="procedure" name="procedure"><br><br>
+      <button id="getPrice" type="button" onclick="get_price();">Get Price</button><br><br>
+      <p>Price: $<strong id="price"></strong><p>
+  
+    
+  
+  </body>
+  
+</html>
