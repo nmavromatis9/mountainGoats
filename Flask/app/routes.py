@@ -242,10 +242,8 @@ def user_account():
 def admin():
     return render_template("change_price.html")
 
-
-@app.route("/get_price", methods=["POST"])
-def get_price():
-    
+@app.route("/search", methods=["POST"])
+def search():
     # req will take in the post from admin.html, get_json() will parse the request
     # to a python dictionary
     req = request.get_json()
@@ -256,6 +254,39 @@ def get_price():
     hospital = req["hospital"]
     insurer = req["insurer"]
     procedure = req["procedure"]
+
+    # connect to database
+    try:
+        con = sqlite3.connect("../../DB_Setup/hospital.db")
+    except:
+        print("ERROR CONNECTING TO DB")
+    
+    # query the database for procedures
+    cur = con.cursor()
+    query = cur.execute("SELECT Description from tblCPT WHERE Description LIKE ? ", ('%'+procedure+'%',))
+    procedures=query.fetchall()
+    #print(procedures)
+    con.close()
+    
+    # Response with procedures in JSON form, status code 200
+    res = make_response(jsonify({"procedures" : procedures}), 200)
+    # res will be sent back to admin.html as json object
+    return res
+
+
+@app.route("/get_price", methods=["POST"])
+def get_price():
+    # req will take in the post from admin.html, get_json() will parse the request
+    # to a python dictionary
+    req = request.get_json()
+    print(req)
+    
+    # SQL query to get the price
+    # extract values from dictionary
+    hospital = req["hospital"]
+    insurer = req["insurer"]
+    procedure = req["procedure"]
+    print(procedure)
     
     # connect to database
     try:
@@ -269,7 +300,6 @@ def get_price():
     price=query.fetchall()
     print(price)
     con.close()
-    
     
     # Response with price in JSON form, status code 200
     res = make_response(jsonify({"price" : price}), 200)
