@@ -204,6 +204,7 @@ def browse_procedure():
     res=getAllCPT()
     paths=[]
     names=[]
+    t = []
     #first, convert tuple to string, then take slice,
     #then create links
     #Must match description to code for names.
@@ -219,14 +220,21 @@ def browse_procedure():
         names.append(r3.fetchone())
         paths.append((url_for('browseCPT', CPT=str(i))))
     #pass this as parameter to render html, which accesses param as 'var'
-    return render_template("browse_procedure.html", var=form, p=paths, n=names, path=url_for('index'))
+    return render_template("browse_procedure.html", r=r3,var=form, p=paths, n=names, path=url_for('index'))
 
 @app.route("/account",methods =['POST','GET'])
+@flask_login.login_required
 def user_account():
     #Call function that uses Flask-WTF’s class FlaskForm
     form = MyForm()
+    u=flask_login.current_user.id
+    conn = sqlite3.connect('../../DB_Setup/login.db')
+    c = conn.cursor()
+    c.execute("Select insProvider, prefHospital, doctorName From users Where email = ?",(u,))
+    cRes=c.fetchone()
+    #un = getUserEmail() #updated 11/12/2022 by CJI
     #pass this as parameter to render html, which accesses param as 'var'
-    return render_template("user_account.html", var=form, path=url_for('index'))
+    return render_template("user_account.html", usr=u,ins=cRes[0],ph=cRes[1],dn=cRes[2],var=form, path=url_for('index'))
 
 #FUNCTIONS:
 
