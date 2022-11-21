@@ -8,6 +8,9 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import flask_login
 
+# The following are used for the admin page
+from flask import render_template, request, jsonify, make_response
+
 ## Import "prefix" code into your Flask app to make your app usable when running
 ## Flask either in the csel.io virtual machine or running on your local machine.
 import prefix
@@ -235,6 +238,124 @@ def user_account():
     #un = getUserEmail() #updated 11/12/2022 by CJI
     #pass this as parameter to render html, which accesses param as 'var'
     return render_template("user_account.html", usr=u,ins=cRes[0],ph=cRes[1],dn=cRes[2],var=form, path=url_for('index'))
+
+
+
+################################################################################################################################
+################################################################################################################################
+################################################################################################################################
+################################################################################################################################
+
+@app.route("/admin")
+def admin():
+    return render_template("change_price.html")
+
+@app.route("/search", methods=["POST"])
+def search():
+    # req will take in the post from admin.html, get_json() will parse the request
+    # to a python dictionary
+    req = request.get_json()
+    print(req)
+    
+    # SQL query to get the price
+    # extract values from dictionary
+    hospital = req["hospital"]
+    insurer = req["insurer"]
+    procedure = req["procedure"]
+
+    # connect to database
+    try:
+        con = sqlite3.connect("../../DB_Setup/hospital.db")
+    except:
+        print("ERROR CONNECTING TO DB")
+    
+    # query the database for procedures
+    cur = con.cursor()
+    query = cur.execute("SELECT Description from tblCPT WHERE Description LIKE ? ", ('%'+procedure+'%',))
+    procedures=query.fetchall()
+    #print(procedures)
+    con.close()
+    
+    # Response with procedures in JSON form, status code 200
+    res = make_response(jsonify({"procedures" : procedures}), 200)
+    # res will be sent back to admin.html as json object
+    return res
+
+
+@app.route("/get_price", methods=["POST"])
+def get_price():
+    # req will take in the post from admin.html, get_json() will parse the request
+    # to a python dictionary
+    req = request.get_json()
+    print(req)
+    
+    # SQL query to get the price
+    # extract values from dictionary
+    hospital = req["hospital"]
+    insurer = req["insurer"]
+    procedure = req["procedure"]
+    print(procedure)
+    
+    # connect to database
+    try:
+        con = sqlite3.connect("../../DB_Setup/hospital.db")
+    except:
+        print("ERROR CONNECTING TO DB")
+    
+    # query the database for price
+    cur = con.cursor()
+    query = cur.execute("SELECT Cost from tblHospitalPrices WHERE Hospital_ID = ( SELECT Hospital_ID FROM tblHospitals WHERE Hospital_name = ? ) AND InsurerID = ( SELECT Insurer_ID FROM tblInsurer WHERE name = ? ) AND CPT_code = ( SELECT CPT_code FROM tblCPT WHERE Description = ? ) ", (hospital, insurer, procedure))
+    price=query.fetchall()
+    print(price)
+    con.close()
+    
+    # Response with price in JSON form, status code 200
+    res = make_response(jsonify({"price" : price}), 200)
+    # res will be sent back to admin.html as json object
+    return res
+
+@app.route("/set_price", methods=["POST"])
+def set_price():
+    # req will take in the post from admin.html, get_json() will parse the request
+    # to a python dictionary
+    req = request.get_json()
+    print(req)
+    
+    # SQL update statement to set the new price
+    # extract values from dictionary
+    hospital = req["hospital"]
+    insurer = req["insurer"]
+    procedure = req["procedure"]
+    desired_price = req["desired_price"]
+    
+    # connect to database
+    try:
+        con = sqlite3.connect("../../DB_Setup/hospital.db")
+    except:
+        print("ERROR CONNECTING TO DB")
+    
+    # stmt to update the database
+    cur = con.cursor()
+    stmt = cur.execute("UPDATE tblHospitalPrices SET Cost = ? WHERE Hospital_ID = ( SELECT Hospital_ID FROM tblHospitals WHERE Hospital_name = ? ) AND InsurerID = ( SELECT Insurer_ID FROM tblInsurer WHERE name = ? ) AND CPT_code = ( SELECT CPT_code FROM tblCPT WHERE Description = ? ) ", (desired_price, hospital, insurer, procedure))
+    
+    # query to get the updated price
+    query = cur.execute("SELECT Cost from tblHospitalPrices WHERE Hospital_ID = ( SELECT Hospital_ID FROM tblHospitals WHERE Hospital_name = ? ) AND InsurerID = ( SELECT Insurer_ID FROM tblInsurer WHERE name = ? ) AND CPT_code = ( SELECT CPT_code FROM tblCPT WHERE Description = ? ) ", (hospital, insurer, procedure))
+
+    new_price=query.fetchall()
+    con.commit()
+    con.close()
+
+    # Response with price in JSON form, status code 200
+    res = make_response(jsonify({"new_price" : new_price}), 200)
+    # res will be sent back to admin.html as json object
+    return res
+    
+    
+
+################################################################################################################################
+################################################################################################################################
+################################################################################################################################
+################################################################################################################################
 
 #FUNCTIONS:
 

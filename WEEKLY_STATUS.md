@@ -35,6 +35,9 @@ During the sixth week, Nick got a basic version of Flask running, created a sear
 #### Week 12 Update (7 Nov to 14 Nov)
 During the seventh week, Nick created the python script to dynamically generate each "browse by link" from SQL and populate each browse by page with these links automatically. Cooper agreed to continue to work on the CSS, and Patrick agreed to work on other extra features such as a page to add/update results to the database. 
 
+#### Week 13 Update (15 Nov to 22 Nov)
+During the eighth week, Cooper implemented bootstrap for styling on the user account page, the nav bar from this will extend to all pages. Patrick completed the Admin page and might make a few tweaks here and there. Nick provided help with the backend python script to wire up some of the front end features with the database. In the coming weeks we will finish up small tweaks and look towards a deployment plan.
+
 <figure>
   <IMG SRC="TrelloSC.PNG">
 </figure>
