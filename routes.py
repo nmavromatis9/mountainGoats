@@ -90,7 +90,7 @@ def Hospital_results():
 @app.route('/logins', methods=['GET', 'POST'])
 def login():
     try:
-        con = sqlite3.connect("../../DB_Setup/login.db")
+        con = sqlite3.connect("DB_Setup/login.db")
         cur=con.cursor()
     except:
         print("BAD CONNECTION")
@@ -130,7 +130,7 @@ def signup():
     passwo=request.form['signupP']
     #if email in users and request.form['password'] == users[email]['password']:
     try:
-        con = sqlite3.connect("../../DB_Setup/login.db")
+        con = sqlite3.connect("DB_Setup/login.db")
         cur=con.cursor()
     except:
         print("BAD CONNECTION")
@@ -212,7 +212,7 @@ def browse_procedure():
     #then create links
     #Must match description to code for names.
     try:
-        con = sqlite3.connect("../../DB_Setup/hospital.db")
+        con = sqlite3.connect("DB_Setup/hospital.db")
     except:
         print("ERROR CONNECTING TO DB")
     cur = con.cursor()
@@ -231,7 +231,7 @@ def user_account():
     #Call function that uses Flask-WTF’s class FlaskForm
     form = MyForm()
     u=flask_login.current_user.id
-    conn = sqlite3.connect('../../DB_Setup/login.db')
+    conn = sqlite3.connect('DB_Setup/login.db')
     c = conn.cursor()
     c.execute("Select insProvider, prefHospital, doctorName From users Where email = ?",(u,))
     cRes=c.fetchone()
@@ -265,7 +265,7 @@ def search():
 
     # connect to database
     try:
-        con = sqlite3.connect("../../DB_Setup/hospital.db")
+        con = sqlite3.connect("DB_Setup/hospital.db")
     except:
         print("ERROR CONNECTING TO DB")
     
@@ -298,7 +298,7 @@ def get_price():
     
     # connect to database
     try:
-        con = sqlite3.connect("../../DB_Setup/hospital.db")
+        con = sqlite3.connect("DB_Setup/hospital.db")
     except:
         print("ERROR CONNECTING TO DB")
     
@@ -330,7 +330,7 @@ def set_price():
     
     # connect to database
     try:
-        con = sqlite3.connect("../../DB_Setup/hospital.db")
+        con = sqlite3.connect("DB_Setup/hospital.db")
     except:
         print("ERROR CONNECTING TO DB")
     
@@ -366,7 +366,7 @@ def getCPT(searchTerm):
 
     print("Testing...")
     try:
-        con = sqlite3.connect("../../DB_Setup/hospital.db")
+        con = sqlite3.connect("DB_Setup/hospital.db")
     except:
         print("ERROR CONNECTING TO DB")
     
@@ -381,7 +381,7 @@ def getInsurers(searchTerm):
 
     print("Testing...")
     try:
-        con = sqlite3.connect("../../DB_Setup/hospital.db")
+        con = sqlite3.connect("DB_Setup/hospital.db")
     except:
         print("ERROR CONNECTING TO DB")
     
@@ -397,7 +397,7 @@ def getHospitals(searchTerm):
 
     print("Testing...")
     try:
-        con = sqlite3.connect("../../DB_Setup/hospital.db")
+        con = sqlite3.connect("DB_Setup/hospital.db")
     except:
         print("ERROR CONNECTING TO DB")
     
@@ -410,7 +410,7 @@ def getHospitals(searchTerm):
 #Functions to get all of a category to populate Browse By pages
 def getAllInsurers():
     try:
-        con = sqlite3.connect("../../DB_Setup/hospital.db")
+        con = sqlite3.connect("DB_Setup/hospital.db")
     except:
         print("ERROR CONNECTING TO DB")
     cur = con.cursor()
@@ -421,7 +421,7 @@ def getAllInsurers():
 
 def getAllHospitals():
     try:
-        con = sqlite3.connect("../../DB_Setup/hospital.db")
+        con = sqlite3.connect("DB_Setup/hospital.db")
     except:
         print("ERROR CONNECTING TO DB")
     cur = con.cursor()
@@ -432,7 +432,7 @@ def getAllHospitals():
 
 def getAllCPT():
     try:
-        con = sqlite3.connect("../../DB_Setup/hospital.db")
+        con = sqlite3.connect("DB_Setup/hospital.db")
     except:
         print("ERROR CONNECTING TO DB")
     cur = con.cursor()
@@ -491,7 +491,7 @@ class User(flask_login.UserMixin):
 
 @login_manager.user_loader
 def user_loader(email2):
-    con = sqlite3.connect("../../DB_Setup/login.db")
+    con = sqlite3.connect("DB_Setup/login.db")
     cur = con.cursor()
     cur.execute("SELECT email from users WHERE (email=?)", (email2,))
     if not cur.fetchone():
@@ -504,7 +504,7 @@ def user_loader(email2):
 @login_manager.request_loader
 def request_loader(request):
     name = request.form.get('email')
-    con = sqlite3.connect("../../DB_Setup/login.db")
+    con = sqlite3.connect("DB_Setup/login.db")
     cur = con.cursor()
     cur.execute("SELECT email from users WHERE (email=?)", (name,))
     if not cur.fetchone(): 
@@ -520,7 +520,7 @@ def unauthorized_handler():
 
 #Function to add new user to db file
 def addUser(name, passw):
-    con = sqlite3.connect("../../DB_Setup/login.db")
+    con = sqlite3.connect("DB_Setup/login.db")
     cur = con.cursor()
     cur.execute("INSERT INTO users VALUES (?, ?);",(name, passw))
     con.commit()

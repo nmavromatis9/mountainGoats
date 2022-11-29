@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--     <link rel="stylesheet" href='static/CSS/results.css'/> -->
+     <link rel="stylesheet" href='static/CSS/bootstrap.min.css'/>
+</head>
+<body>
+<h2><h2>
+<table class="table table-dark table-striped" id="results" style="width:100%">
+<tr>
+    <th>CPT Code</th>
+    <th>Description</th>
+    <th>Category</th>
+    <th>Hospital Name</th>
+    <th>Insurer</th>
+    <th>Cost</th>
+    <th>Gross Charge</th>
+    <th>Cash Discount</th>
+</tr>
+  {% for r in res %}
+  <tr>
+    <td>{{r[0]}}</td>
+    <td>{{r[1]}}</td>
+    <td>{{r[2]}}</td>
+    <td>{{r[3]}}</td>
+    <td>{{r[4]}}</td>
+    <td>{{r[5]}}</td>
+    <td>{{r[6]}}</td>
+    <td>{{r[7]}}</td>
+  </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
